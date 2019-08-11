@@ -93,9 +93,15 @@ function testing(recipientId, text) {
       sendMessage(recipientId, { text: "POOP" });
     });
 
-    var database = firebase.database().ref("Dinner/Hi");
-    var rootRef = database.child('graduate').push();
-    console.log(starCountRef)
+    var rootRef = firebase.database().ref();
+    var storesRef = rootRef.child('app/cars');
+    var newStoreRef = storesRef.push();
+      newStoreRef.set({
+        name: "Cars",
+        "pageId": "23",
+        "storeURL": "/app/cars/gallery"
+      });
+//    console.log(starCountRef)
 };
 
 // send rich message with kitten
