@@ -71,6 +71,7 @@ function testing(recipientId, text) {
     });
     // 2
     sendMessage(recipientId, "2: " + body);
+    sendMessage(recipientId, "3: shalosh");
 
 };
 
