@@ -57,30 +57,21 @@ function sendMessage(recipientId, message) {
 };
 
 function hiTest(recipientId, text) {
-    if (text == "hi") {
-        "message" = {
-            "text": "Pick a color:",
-            "quick_replies":[
-              {
-                "content_type":"text",
-                "title":"Red",
-                "payload":"<POSTBACK_PAYLOAD>",
-                "image_url":"http://example.com/img/red.png"
-              },{
-                "content_type":"text",
-                "title":"Green",
-                "payload":"<POSTBACK_PAYLOAD>",
-                "image_url":"http://example.com/img/green.png"
-              }
-            ]
-          }
-
-          sendMessage(recipientId, message);
-
-          return true
+    "message" = {
+        "text": "Pick a color:",
+        "quick_replies":[
+            {
+            "content_type":"text",
+            "title":"Red"
+            },{
+            "content_type":"text",
+            "title":"Green"
+            }
+        ]
     }
+    sendMessage(recipientId, message);
 
-    return false
+    return true
 }
 
 // send rich message with kitten
