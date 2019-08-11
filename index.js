@@ -62,7 +62,8 @@ function sendMessage(recipientId, message) {
 
 function testing(recipientId, text) {
     //  'https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young'
-    var theurl = 'https://olim-hackathon.firebaseio.com/'
+//    var theurl = 'https://olim-hackathon.firebaseio.com/'
+    var theurl = 'https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young'
     const request = require('request');
     request(theurl, function (error, response, body) {
       console.error('error:', error); // Print the error if one occurred
