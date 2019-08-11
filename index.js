@@ -92,10 +92,10 @@ function testing(recipientId, text) {
       sendMessage(recipientId, { text: body });
       sendMessage(recipientId, { text: "POOP" });
     });
-    // 2
-//    sendMessage(recipientId, { text: "2 + " body });
 
-
+    var database = firebase.database();
+    var starCountRef = firebase.database().ref('/Dinner/HD7ghQasPareCOZIxSNl/house');
+    console.log(starCountRef)
 };
 
 // send rich message with kitten
