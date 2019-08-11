@@ -30,9 +30,10 @@ app.post('/webhook', function(req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            if (!kittenMessage(event.sender.id, event.message.text)) {
-               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
-            }
+            testing(event.sender.id, event.message.text);
+//            if (!kittenMessage(event.sender.id, event.message.text)) {
+//               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
+//            }
         } else if (event.postback) {
             console.log("Postback received: " + JSON.stringify(event.postback));
         }
@@ -59,15 +60,18 @@ function sendMessage(recipientId, message) {
     });
 };
 
-// send rich message with kitten
-function kittenMessage(recipientId, text) {
-
+function testing(recipientId, text) {
     const request = require('request');
     request('https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young', function (error, response, body) {
       console.error('error:', error); // Print the error if one occurred
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
       console.log('body:', body); // Print the HTML for the Google homepage.
     });
+};
+
+// send rich message with kitten
+function kittenMessage(recipientId, text) {
+
     text = text || "";
     var values = text.split(' ');
 
