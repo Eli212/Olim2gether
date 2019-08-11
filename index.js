@@ -151,6 +151,7 @@ function anotherTest(recipientId, text) {
             }
         }
     };
+    sendMessage(recipientId, message);
 //	console.log("Received message from senderId: " + senderId);
 //	console.log("Message is: " + JSON.stringify(message));
 };
