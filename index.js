@@ -32,10 +32,9 @@ app.post('/webhook', function(req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            anotherTest(event.sender.id, event.message.text)
-//            if (!kittenMessage(event.sender.id, event.message.text)) {
-//               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
-//            }
+            if (!kittenMessage(event.sender.id, event.message.text)) {
+               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
+            }
         } else if (event.postback) {
             console.log("Postback received: " + JSON.stringify(event.postback));
         }
@@ -128,31 +127,4 @@ function kittenMessage(recipientId, text) {
 
     return false;
 
-};
-
-function anotherTest(recipientId, text) {
-    message = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "hello mr, how can i hep you?\n you can choose between a friday dinner and a social meeting:  ",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "friday dinner",
-                        "payload": "User " + recipientId + " likes kitten ",
-                    }, {
-                        "type": "postback",
-                        "title": "social meeting",
-                        "payload": "User " + recipientId + " likes kitten ",
-                    }]
-                }]
-            }
-        }
-    };
-    sendMessage(recipientId, message);
-    //
-//	console.log("Received message from senderId: " + senderId);
-//	console.log("Message is: " + JSON.stringify(message));
 };
