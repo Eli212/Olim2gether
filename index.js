@@ -94,7 +94,7 @@ function testing(recipientId, text) {
     });
 
     var database = firebase.database().ref("Dinner/Hi");
-    var rootRef = database.child('graduate')
+    var rootRef = database.child('graduate').push();
     console.log(starCountRef)
 };
 
