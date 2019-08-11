@@ -61,7 +61,7 @@ function sendMessage(recipientId, message) {
 
 // send rich message with kitten
 function kittenMessage(recipientId, text) {
-
+    console.log("ELIIIIIIII");
     text = text || "";
     var values = text.split(' ');
 
