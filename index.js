@@ -78,7 +78,7 @@ function kittenMessage(recipientId, text) {
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
-                                "title": "Show kitten"
+                                "title": "Show kittenenenen"
                                 }, {
                                 "type": "postback",
                                 "title": "I like this",
