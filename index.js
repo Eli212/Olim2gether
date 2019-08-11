@@ -56,24 +56,6 @@ function sendMessage(recipientId, message) {
     });
 };
 
-function hiTest(recipientId, text) {
-    "message" = {
-        "text": "Pick a color:",
-        "quick_replies":[
-            {
-            "content_type":"text",
-            "title":"Red"
-            },{
-            "content_type":"text",
-            "title":"Green"
-            }
-        ]
-    }
-    sendMessage(recipientId, message);
-
-    return true
-}
-
 // send rich message with kitten
 function kittenMessage(recipientId, text) {
     
