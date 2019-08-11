@@ -68,6 +68,7 @@ function testing(recipientId, text) {
       console.log('body:', body); // Print the HTML for the Google homepage.
       // 1
       sendMessage(recipientId, { text: body });
+      sendMessage(recipientId, { text: "POOP" });
     });
     // 2
 //    sendMessage(recipientId, { text: "2 + " body });
