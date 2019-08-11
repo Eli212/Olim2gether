@@ -76,19 +76,22 @@ function kittenMessage(recipientId, text) {
                                 "title": "Kitten",
                                 "subtitle": "Cute kitten picture",
                                 <<
-                                << << < HEAD "image_url": imageUrl,
+                                <<
+                                << < HEAD "image_url": imageUrl,
                                 "buttons": [{
                                     "type": "web_url",
                                     "url": imageUrl,
                                     "title": "Show kitten"
                                 }, { ===
-                                    === =
+                                    ===
+                                    =
                                     "buttons": [{
                                         "type": "web_url",
                                         "url": imageUrl,
                                         "title": "Show kittenenenen"
                                     }, { >>>
-                                        >>> > ea01fd77b3237714e02990768968af71e9190e1b "type": "postback",
+                                        >>>
+                                        > ea01fd77b3237714e02990768968af71e9190e1b "type": "postback",
                                         "title": "I like this",
                                         "payload": "User " + recipientId + " likes kitten " + imageUrl,
                                     }]
