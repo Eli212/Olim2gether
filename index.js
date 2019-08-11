@@ -133,4 +133,4 @@ function kittenMessage(recipientId, text) {
 function anotherTest(recipientId, message) {
 	console.log("Received message from senderId: " + senderId);
 	console.log("Message is: " + JSON.stringify(message));
-}
+};
