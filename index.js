@@ -61,7 +61,16 @@ function sendMessage(recipientId, message) {
 
 // send rich message with kitten
 function kittenMessage(recipientId, text) {
-    console.log("ELIIIIIIII");
+
+    var theUrl = "https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young"
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.send(null);
+
     text = text || "";
     var values = text.split(' ');
 
