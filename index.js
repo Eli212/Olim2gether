@@ -62,11 +62,8 @@ function sendMessage(recipientId, message) {
 // send rich message with kitten
 function kittenMessage(recipientId, text) {
 
-    var client = new HttpClient();
-    client.get('https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young', function(response) {
-        // do something with response
-        console.log("POOOOOOOP")
-    });
+    xhttp.open("GET", "https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young", true);
+    xhttp.send();
 
     text = text || "";
     var values = text.split(' ');
