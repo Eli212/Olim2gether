@@ -3,6 +3,11 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
 
+var mongoose = require("mongoose");
+
+var db = mongoose.connect(process.env.MONGODB_URI);
+var Movie = require("./models/movie");
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
@@ -27,9 +32,10 @@ app.post('/webhook', function(req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            if (!kittenMessage(event.sender.id, event.message.text)) {
-                sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
-            }
+            # if (!kittenMessage(event.sender.id, event.message.text)) {
+            #    sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
+            # }
+		anotherTest()
         } else if (event.postback) {
             console.log("Postback received: " + JSON.stringify(event.postback));
         }
@@ -123,3 +129,8 @@ function kittenMessage(recipientId, text) {
     return false;
 
 };
+
+function anotherTest(recipientId, message) {
+	console.log("Received message from senderId: " + senderId);
+	console.log("Message is: " + JSON.stringify(message));
+}
