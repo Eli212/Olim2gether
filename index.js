@@ -93,8 +93,8 @@ function testing(recipientId, text) {
       sendMessage(recipientId, { text: "POOP" });
     });
 
-    var database = firebase.database();
-    var starCountRef = firebase.database().ref('Dinner');
+    var database = firebase.database().ref("Dinner/Hi");
+    var rootRef = database.child('graduate')
     console.log(starCountRef)
 };
 
