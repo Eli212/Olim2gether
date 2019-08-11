@@ -73,54 +73,17 @@ function kittenMessage(recipientId, text) {
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                                "title": "Kitten",
-                                "subtitle": "Cute kitten picture",
-                                <<
-                                <<
-                                << < HEAD "image_url": imageUrl,
-                                "buttons": [{
-                                    "type": "web_url",
-                                    "url": imageUrl,
-                                    "title": "Show kitten"
-                                }, { ===
-                                    ===
-                                    =
-                                    "buttons": [{
-                                        "type": "web_url",
-                                        "url": imageUrl,
-                                        "title": "Show kittenenenen"
-                                    }, { >>>
-                                        >>>
-                                        > ea01fd77b3237714e02990768968af71e9190e1b "type": "postback",
-                                        "title": "I like this",
-                                        "payload": "User " + recipientId + " likes kitten " + imageUrl,
-                                    }]
-                                }]
-                            }
-                        }
-                    };
-
-                    sendMessage(recipientId, message);
-
-                    return true;
-                }
-            }
-
-            message = {
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": [{
-                            "title": "hello mr, how can i hep you?\n you can choose between a friday dinner and a social meeting:  ",
+                            "title": "Kitten",
+                            "subtitle": "Cute kitten picture",
+                            "image_url": imageUrl,
                             "buttons": [{
-                                "type": "postback",
-                                "title": "friday dinner",
-                                "payload": "User " + recipientId + " likes kitten ",
+                                "type": "web_url",
+                                "url": imageUrl,
+                                "title": "Show kitten"
                             }, {
                                 "type": "postback",
-                                "title": "social meeting",
-                                "payload": "User " + recipientId + " likes kitten ",
+                                "title": "I like this",
+                                "payload": "User " + recipientId + " likes kitten " + imageUrl,
                             }]
                         }]
                     }
@@ -130,9 +93,33 @@ function kittenMessage(recipientId, text) {
             sendMessage(recipientId, message);
 
             return true;
+        }
+    }
+    // message = {
+    //     "attachment": {
+    //         "type": "template",
+    //         "payload": {
+    //             "template_type": "generic",
+    //             "elements": [{
+    //                 "title": "hello mr, how can i hep you?\n you can choose between a friday dinner and a social meeting:  ",
+    //                 "buttons": [{
+    //                     "type": "postback",
+    //                     "title": "friday dinner",
+    //                     "payload": "User " + recipientId + " likes kitten ",
+    //                 }, {
+    //                     "type": "postback",
+    //                     "title": "social meeting",
+    //                     "payload": "User " + recipientId + " likes kitten ",
+    //                 }]
+    //             }]
+    //         }
+    //     }
+    // };
 
+    // sendMessage(recipientId, message);
 
+    // return true;
 
-            return false;
+    return false;
 
-        };
+};
