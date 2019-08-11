@@ -102,13 +102,13 @@ function testing(recipientId, text) {
 //        "storeURL": "/app/cars/gallery"
 //      });
 
-    var ref = firebase.database().ref();
+    var ref = firebase.database().ref("app/cars/-Lm0efarEOgA_437_ZHr");
     ref.on("value", function(snapshot) {
        console.log(snapshot.val());
     }, function (error) {
        console.log("Error: " + error.code);
     });
-    
+
 };
 
 // send rich message with kitten
