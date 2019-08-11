@@ -3,8 +3,11 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
 
-//var mongoose = require("mongoose");
-//var db = mongoose.connect(process.env.MONGODB_URI);
+var firebase = require("firebase/app");
+
+// Add the Firebase products that you want to use
+require("firebase/auth");
+require("firebase/firestore");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -61,7 +64,7 @@ function sendMessage(recipientId, message) {
 };
 
 function testing(recipientId, text) {
-    var ddd = firebaseio.database()
+
     //  'https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young'
 //    var theurl = 'https://olim-hackathon.firebaseio.com/'
     var theurl = 'https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young'
