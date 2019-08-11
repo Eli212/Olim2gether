@@ -64,13 +64,11 @@ function hiTest(recipientId, text) {
               {
                 "content_type":"text",
                 "title":"Red",
-                "payload":"<POSTBACK_PAYLOAD>",
-                "image_url":"http://example.com/img/red.png"
+                "payload":"User " + recipientId + " choose red",
               },{
                 "content_type":"text",
                 "title":"Green",
-                "payload":"<POSTBACK_PAYLOAD>",
-                "image_url":"http://example.com/img/green.png"
+                "payload":"User " + recipientId + " choose green",
                 }
             ]
         };
