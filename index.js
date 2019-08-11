@@ -33,9 +33,9 @@ app.post('/webhook', function(req, res) {
         var event = events[i];
         if (event.message && event.message.text) {
             anotherTest(event.sender.id, event.message.text)
-            if (!kittenMessage(event.sender.id, event.message.text)) {
-               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
-            }
+//            if (!kittenMessage(event.sender.id, event.message.text)) {
+//               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
+//            }
         } else if (event.postback) {
             console.log("Postback received: " + JSON.stringify(event.postback));
         }
@@ -130,7 +130,7 @@ function kittenMessage(recipientId, text) {
 
 };
 
-function anotherTest(recipientId, message) {
+function anotherTest(recipientId, text) {
 	console.log("Received message from senderId: " + senderId);
 	console.log("Message is: " + JSON.stringify(message));
 };
