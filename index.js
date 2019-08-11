@@ -58,7 +58,7 @@ function sendMessage(recipientId, message) {
 
 function hiTest(recipientId, text) {
     if (text == "hi") {
-        "message" = {
+        message = {
             "text": "Pick a color:",
             "quick_replies":[
               {
