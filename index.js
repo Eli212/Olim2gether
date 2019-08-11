@@ -61,8 +61,10 @@ function sendMessage(recipientId, message) {
 };
 
 function testing(recipientId, text) {
+    //  'https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young'
+    var theurl = 'https://olim-hackathon.firebaseio.com/'
     const request = require('request');
-    request('https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young', function (error, response, body) {
+    request(theurl, function (error, response, body) {
       console.error('error:', error); // Print the error if one occurred
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
       console.log('body:', body); // Print the HTML for the Google homepage.
