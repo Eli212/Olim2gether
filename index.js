@@ -45,20 +45,6 @@ app.post('/webhook', function(req, res) {
     res.sendStatus(200);
 });
 
-function startFirebase() {
-    var firebaseConfig = {
-      apiKey: "AIzaSyBcoDUQKu8hlGNj-Ig4Dp_I0Fae4dFEBJA",
-      authDomain: "olim-hackathon.firebaseapp.com",
-      databaseURL: "https://olim-hackathon.firebaseio.com",
-      projectId: "olim-hackathon",
-      storageBucket: "olim-hackathon.appspot.com",
-      messagingSenderId: "1079712175702",
-      appId: "1:1079712175702:web:5b3ce2f95f80150f"
-    };
-
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-};
 
 // generic function sending messages
 function sendMessage(recipientId, message) {
@@ -77,6 +63,22 @@ function sendMessage(recipientId, message) {
             console.log('Error: ', response.body.error);
         }
     });
+};
+
+function startFirebase() {
+    console.log("here")
+    var firebaseConfig = {
+      apiKey: "AIzaSyBcoDUQKu8hlGNj-Ig4Dp_I0Fae4dFEBJA",
+      authDomain: "olim-hackathon.firebaseapp.com",
+      databaseURL: "https://olim-hackathon.firebaseio.com",
+      projectId: "olim-hackathon",
+      storageBucket: "olim-hackathon.appspot.com",
+      messagingSenderId: "1079712175702",
+      appId: "1:1079712175702:web:5b3ce2f95f80150f"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
 };
 
 function testing(recipientId, text) {
