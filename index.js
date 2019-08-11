@@ -102,15 +102,13 @@ function testing(recipientId, text) {
 //        "storeURL": "/app/cars/gallery"
 //      });
 
-    firebase.database().ref().child("app/cars/-Lm0efarEOgA_437_ZHr").on('value').then(function(snapshot) {
-    snapshot.forEach(function(child) {
-        var childData = child.val();
-        var name=child.val().name;
-        var pageId=child.val().pageId;
-        console.log(name)
-        });
+    var ref = firebase.database().ref();
+    ref.on("value", function(snapshot) {
+       console.log(snapshot.val());
+    }, function (error) {
+       console.log("Error: " + error.code);
     });
-
+    
 };
 
 // send rich message with kitten
