@@ -92,16 +92,25 @@ function testing(recipientId, text) {
       sendMessage(recipientId, { text: body });
       sendMessage(recipientId, { text: "POOP" });
     });
+    //// Write Data to Firebase
+//    var rootRef = firebase.database().ref();
+//    var storesRef = rootRef.child('app/cars');
+//    var newStoreRef = storesRef.push();
+//      newStoreRef.set({
+//        name: "Cars",
+//        "pageId": "23",
+//        "storeURL": "/app/cars/gallery"
+//      });
 
-    var rootRef = firebase.database().ref();
-    var storesRef = rootRef.child('app/cars');
-    var newStoreRef = storesRef.push();
-      newStoreRef.set({
-        name: "Cars",
-        "pageId": "23",
-        "storeURL": "/app/cars/gallery"
-      });
-//    console.log(starCountRef)
+    firebase.database().ref().child("app/cars/-Lm0efarEOgA_437_ZHr").on('value').then(function(snapshot) {
+    snapshot.forEach(function(child) {
+        var childData = child.val();
+        var name=child.val().name;
+        var pageId=child.val().pageId;
+        console.log(name)
+        });
+    });
+
 };
 
 // send rich message with kitten
