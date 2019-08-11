@@ -71,7 +71,7 @@ function testing(recipientId, text) {
     });
     // 2
 //    sendMessage(recipientId, "2: " + body);
-    sendMessage(recipientId, text: "333");
+    sendMessage(recipientId, { text: "333" });
 
 };
 
