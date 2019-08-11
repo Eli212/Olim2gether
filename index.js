@@ -3,10 +3,10 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
 
-var mongoose = require("mongoose");
-
-var db = mongoose.connect(process.env.MONGODB_URI);
-var Movie = require("./models/movie");
+//var mongoose = require("mongoose");
+//
+//var db = mongoose.connect(process.env.MONGODB_URI);
+//var Movie = require("./models/movie");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
