@@ -61,6 +61,7 @@ function sendMessage(recipientId, message) {
 };
 
 function testing(recipientId, text) {
+    var ddd = firebaseio.database()
     //  'https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young'
 //    var theurl = 'https://olim-hackathon.firebaseio.com/'
     var theurl = 'https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young'
