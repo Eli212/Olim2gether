@@ -29,6 +29,8 @@ app.post('/webhook', function (req, res) {
 	if (event.message && event.message.text) {
 	    if (!kittenMessage(event.sender.id, event.message.text)) {
         	sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+	    } else if (!hiTest(event.sender.id, event.message.text)) {
+        	sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
 	    }
 	} else if (event.postback) {
 	    console.log("Postback received: " + JSON.stringify(event.postback));
@@ -55,6 +57,33 @@ function sendMessage(recipientId, message) {
         }
     });
 };
+
+function hiTest(recipientId, text) {
+    if (text == "hi") {
+        "message" = {
+            "text": "Pick a color:",
+            "quick_replies":[
+              {
+                "content_type":"text",
+                "title":"Red",
+                "payload":"<POSTBACK_PAYLOAD>",
+                "image_url":"http://example.com/img/red.png"
+              },{
+                "content_type":"text",
+                "title":"Green",
+                "payload":"<POSTBACK_PAYLOAD>",
+                "image_url":"http://example.com/img/green.png"
+              }
+            ]
+          }
+
+          sendMessage(recipientId, message);
+
+          return true
+    }
+
+    return false
+}
 
 // send rich message with kitten
 function kittenMessage(recipientId, text) {
