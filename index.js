@@ -131,6 +131,26 @@ function kittenMessage(recipientId, text) {
 };
 
 function anotherTest(recipientId, text) {
-	console.log("Received message from senderId: " + senderId);
-	console.log("Message is: " + JSON.stringify(message));
+    message = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "hello mr, how can i hep you?\n you can choose between a friday dinner and a social meeting:  ",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "friday dinner",
+                        "payload": "User " + recipientId + " likes kitten ",
+                    }, {
+                        "type": "postback",
+                        "title": "social meeting",
+                        "payload": "User " + recipientId + " likes kitten ",
+                    }]
+                }]
+            }
+        }
+    };
+//	console.log("Received message from senderId: " + senderId);
+//	console.log("Message is: " + JSON.stringify(message));
 };
