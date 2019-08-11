@@ -94,7 +94,7 @@ function testing(recipientId, text) {
     });
 
     var database = firebase.database();
-    var starCountRef = firebase.database().ref('/Dinner/HD7ghQasPareCOZIxSNl/house');
+    var starCountRef = firebase.database().ref('/Dinner');
     console.log(starCountRef)
 };
 
