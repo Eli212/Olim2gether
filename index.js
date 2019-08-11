@@ -62,16 +62,12 @@ function sendMessage(recipientId, message) {
 // send rich message with kitten
 function kittenMessage(recipientId, text) {
 
-    var request = new XMLHttpRequest();
-    request.onreadystatechange=function(){
-    if (request.readyState==4 && request.status==200){
-        alert(request.status);
-        // To get the response use request.responseText;
-        }
-    }
-    request.open("GET", "https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young");
-    request.send(null);
-
+    const request = require('request');
+    request('https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young', function (error, response, body) {
+      console.error('error:', error); // Print the error if one occurred
+      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+      console.log('body:', body); // Print the HTML for the Google homepage.
+    });
     text = text || "";
     var values = text.split(' ');
 
