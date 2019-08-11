@@ -62,8 +62,15 @@ function sendMessage(recipientId, message) {
 // send rich message with kitten
 function kittenMessage(recipientId, text) {
 
-    xhttp.open("GET", "https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young", true);
-    xhttp.send();
+    var request = new XMLHttpRequest();
+    request.onreadystatechange=function(){
+    if (request.readyState==4 && request.status==200){
+        alert(request.status);
+        // To get the response use request.responseText;
+        }
+    }
+    request.open("GET", "https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young");
+    request.send(null);
 
     text = text || "";
     var values = text.split(' ');
