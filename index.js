@@ -67,10 +67,10 @@ function testing(recipientId, text) {
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
       console.log('body:', body); // Print the HTML for the Google homepage.
       // 1
-      sendMessage(recipientId, { text: "1 + " body });
+      sendMessage(recipientId, { text: body });
     });
     // 2
-    sendMessage(recipientId, { text: "2 + " body });
+//    sendMessage(recipientId, { text: "2 + " body });
 
 
 };
