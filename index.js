@@ -29,6 +29,7 @@ app.get('/webhook', function(req, res) {
 
 // handler receiving messages
 app.post('/webhook', function(req, res) {
+    startFirebase();
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
@@ -43,6 +44,21 @@ app.post('/webhook', function(req, res) {
     }
     res.sendStatus(200);
 });
+
+function startFirebase() {
+    var firebaseConfig = {
+      apiKey: "AIzaSyBcoDUQKu8hlGNj-Ig4Dp_I0Fae4dFEBJA",
+      authDomain: "olim-hackathon.firebaseapp.com",
+      databaseURL: "https://olim-hackathon.firebaseio.com",
+      projectId: "olim-hackathon",
+      storageBucket: "olim-hackathon.appspot.com",
+      messagingSenderId: "1079712175702",
+      appId: "1:1079712175702:web:5b3ce2f95f80150f"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+};
 
 // generic function sending messages
 function sendMessage(recipientId, message) {
@@ -67,9 +83,8 @@ function testing(recipientId, text) {
 
     //  'https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young'
 //    var theurl = 'https://olim-hackathon.firebaseio.com/'
-    var theurl = 'https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young'
     const request = require('request');
-    request(theurl, function (error, response, body) {
+    request('https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young', function (error, response, body) {
       console.error('error:', error); // Print the error if one occurred
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
       console.log('body:', body); // Print the HTML for the Google homepage.
