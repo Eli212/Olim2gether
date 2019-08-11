@@ -3,11 +3,26 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
 
+///////////////// FIREBASE /////////////////
 var firebase = require("firebase/app");
 
 // Add the Firebase products that you want to use
 require("firebase/auth");
 require("firebase/firestore");
+
+var firebaseConfig = {
+      apiKey: "AIzaSyBcoDUQKu8hlGNj-Ig4Dp_I0Fae4dFEBJA",
+      authDomain: "olim-hackathon.firebaseapp.com",
+      databaseURL: "https://olim-hackathon.firebaseio.com",
+      projectId: "olim-hackathon",
+      storageBucket: "olim-hackathon.appspot.com",
+      messagingSenderId: "1079712175702",
+      appId: "1:1079712175702:web:5b3ce2f95f80150f"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+///////////////// FIREBASE /////////////////
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -29,7 +44,6 @@ app.get('/webhook', function(req, res) {
 
 // handler receiving messages
 app.post('/webhook', function(req, res) {
-    startFirebase();
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
@@ -63,22 +77,6 @@ function sendMessage(recipientId, message) {
             console.log('Error: ', response.body.error);
         }
     });
-};
-
-function startFirebase() {
-    console.log("here")
-    var firebaseConfig = {
-      apiKey: "AIzaSyBcoDUQKu8hlGNj-Ig4Dp_I0Fae4dFEBJA",
-      authDomain: "olim-hackathon.firebaseapp.com",
-      databaseURL: "https://olim-hackathon.firebaseio.com",
-      projectId: "olim-hackathon",
-      storageBucket: "olim-hackathon.appspot.com",
-      messagingSenderId: "1079712175702",
-      appId: "1:1079712175702:web:5b3ce2f95f80150f"
-    };
-
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
 };
 
 function testing(recipientId, text) {
