@@ -82,16 +82,17 @@ function sendMessage(recipientId, message) {
 function testing(recipientId, text) {
 
     //  'https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young'
+    //// Send HTTP request to Azure Functions ////
 //    var theurl = 'https://olim-hackathon.firebaseio.com/'
-    const request = require('request');
-    request('https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young', function (error, response, body) {
-      console.error('error:', error); // Print the error if one occurred
-      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-      console.log('body:', body); // Print the HTML for the Google homepage.
-      // 1
-      sendMessage(recipientId, { text: body });
-      sendMessage(recipientId, { text: "POOP" });
-    });
+//    const request = require('request');
+//    request('https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young', function (error, response, body) {
+//      console.error('error:', error); // Print the error if one occurred
+//      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+//      console.log('body:', body); // Print the HTML for the Google homepage.
+//      // 1
+//      sendMessage(recipientId, { text: body });
+//      sendMessage(recipientId, { text: "POOP" });
+//    });
     //// Write Data to Firebase
 //    var rootRef = firebase.database().ref();
 //    var storesRef = rootRef.child('app/cars');
@@ -102,7 +103,8 @@ function testing(recipientId, text) {
 //        "storeURL": "/app/cars/gallery"
 //      });
 
-    var ref = firebase.database().ref("app/cars/-Lm0efarEOgA_437_ZHr");
+    var ref = firebase.database().ref("users/" + recipientId);
+    console.log("NAME: " + name)
     ref.on("value", function(snapshot) {
        console.log(snapshot.val());
     }, function (error) {
