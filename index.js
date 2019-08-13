@@ -104,7 +104,6 @@ function testing(recipientId, text) {
 //      });
 
     var ref = firebase.database().ref("users/" + recipientId);
-    console.log("NAME: " + name)
     ref.on("value", function(snapshot) {
        console.log(snapshot.val());
     }, function (error) {
