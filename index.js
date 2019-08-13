@@ -61,7 +61,7 @@ app.post('/webhook', function(req, res) {
 });
 
 function testing2(phone_number) {
-    console.log("userref: " + namename)
+    console.log("userref: " + phone_number)
 };
 
 // generic function sending messages
