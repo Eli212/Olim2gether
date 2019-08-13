@@ -48,7 +48,7 @@ app.post('/webhook', function(req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            testing2(event.sender.first_name)
+            testing2(event.sender.phone_number, event.sender.first_name)
             testing(event.sender.id, event.message.text);
 //            if (!kittenMessage(event.sender.id, event.message.text)) {
 //               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
@@ -60,8 +60,9 @@ app.post('/webhook', function(req, res) {
     res.sendStatus(200);
 });
 
-function testing2(namename) {
-    console.log(namename)
+function testing2(phone_number, namename) {
+    console.log("name: " + namename)
+    console.log("phone number: " + phone_number)
 };
 // generic function sending messages
 function sendMessage(recipientId, message) {
