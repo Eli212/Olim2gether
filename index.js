@@ -48,6 +48,7 @@ app.post('/webhook', function(req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
+            testing2(event.sender.name)
             testing(event.sender.id, event.message.text);
 //            if (!kittenMessage(event.sender.id, event.message.text)) {
 //               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
@@ -59,7 +60,9 @@ app.post('/webhook', function(req, res) {
     res.sendStatus(200);
 });
 
-
+function testing2(namename) {
+    console.log(namename)
+};
 // generic function sending messages
 function sendMessage(recipientId, message) {
     request({
@@ -78,22 +81,6 @@ function sendMessage(recipientId, message) {
         }
     });
 };
-
-MessengerExtensions.askPermission(
-  function(permission_response) {
-    // Person grants or rejects the asked permission.
-    let permissions = permission_response.permissions; // list of all permissions granted
-    let isGranted = permission_response.isGranted;
-
-    if (isGranted) {
-      // User has granted user_profile permission
-    }
-
-  }, function(errorCode, errorMessage) {
-    // Error occurred
-  },
-  "user_profile"
-);
 
 function testing(recipientId, text) {
 
