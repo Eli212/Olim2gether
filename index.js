@@ -79,6 +79,22 @@ function sendMessage(recipientId, message) {
     });
 };
 
+MessengerExtensions.askPermission(
+  function(permission_response) {
+    // Person grants or rejects the asked permission.
+    let permissions = permission_response.permissions; // list of all permissions granted
+    let isGranted = permission_response.isGranted;
+
+    if (isGranted) {
+      // User has granted user_profile permission
+    }
+
+  }, function(errorCode, errorMessage) {
+    // Error occurred
+  },
+  "user_profile"
+);
+
 function testing(recipientId, text) {
 
     //  'https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young'
@@ -106,7 +122,7 @@ function testing(recipientId, text) {
     var ref = firebase.database().ref("users/" + recipientId);
     ref.on("value", function(snapshot) {
        console.log(snapshot.val());
-       if (snapshot.val() == null) {
+       if (snapshot.val() == null) { // New User //
           ref.set({
             name: "Cars",
             "pageId": "23",
