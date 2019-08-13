@@ -107,9 +107,7 @@ function testing(recipientId, text) {
     ref.on("value", function(snapshot) {
        console.log(snapshot.val());
        if (snapshot.val() == null) {
-        var storesRef = ref.child('users/' + recipientId);
-        var newStoreRef = storesRef.push();
-          newStoreRef.set({
+          ref.set({
             name: "Cars",
             "pageId": "23",
             "storeURL": "/app/cars/gallery"
