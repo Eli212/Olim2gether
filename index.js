@@ -106,6 +106,15 @@ function testing(recipientId, text) {
     var ref = firebase.database().ref("users/" + recipientId);
     ref.on("value", function(snapshot) {
        console.log(snapshot.val());
+       if (snapshot.val() == null) {
+        var storesRef = ref.child('users/' + recipientId);
+        var newStoreRef = storesRef.push();
+          newStoreRef.set({
+            name: "Cars",
+            "pageId": "23",
+            "storeURL": "/app/cars/gallery"
+          });
+       }
     }, function (error) {
        console.log("Error: " + error.code);
     });
