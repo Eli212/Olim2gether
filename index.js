@@ -59,7 +59,7 @@ app.post('/webhook', function(req, res) {
     }
     res.sendStatus(200);
 });
-function checking_status(recipientId, text){
+async function checking_status(recipientId, text){
     var refer = firebase.database().ref("users/" + recipientId);
 
     refer.on("value", function(snapshot) {
