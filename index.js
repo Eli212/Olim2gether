@@ -85,7 +85,8 @@ function checking_status(recipientId, text){
                     case 0:
                         sendMessage(recipientId, { text: "POOP" });
                         console.log("pipi");
-                        finalStatus.set({1});
+
+                        refer.update({status: 1});
     //                    s.set(1);
                         console.log(snapshot.val() + " " + "checking")
                         break;
