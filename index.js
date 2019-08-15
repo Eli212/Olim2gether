@@ -74,24 +74,18 @@ function checking_status(recipientId, text){
 
        }
        else{
-
-            console.log("===========")
             var status = refer.child('status');
-            console.log("------------"+ status)
             status.on('value', snapshot =>{
                 var finalStatus = snapshot.val();
-                console.log("kkkk: " + finalStatus);
                 switch(finalStatus){
                     case 0:
                         sendMessage(recipientId, { text: "POOP" });
-                        console.log("pipi");
-
+                        console.log("poop");
                         refer.update({status: 1});
-    //                    s.set(1);
-                        console.log(snapshot.val() + " " + "checking")
                         break;
                     case 1:
-                        sendMessage(recipientId, { text: "POOP" });
+                        sendMessage(recipientId, { text: "pipi" });
+                         console.log("pipi");
                         break;
                     default:
                         break;
