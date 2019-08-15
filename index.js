@@ -70,6 +70,7 @@ function checking_status(recipientId, text){
             "storeURL": "/app/cars/gallery",
             "status": 0
           });
+          
        }
        else{
             switch(obj.status){
