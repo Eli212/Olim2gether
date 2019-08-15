@@ -74,14 +74,16 @@ function checking_status(recipientId, text){
 
        }
        else{
+            s = JSON.parse(snapshot.val()+"")
             console.log("===========")
-            var status = refer.child('status');
-            console.log("------------"+ status)
-            switch(status){
+//            var status = refer.child('status');
+//            console.log("------------"+ status)
+            switch(s){
                 case 0:
                     sendMessage(recipientId, { text: "POOP" });
                     console.log("pipi")
-                    status.set(1);
+                    //status.set(1);
+                    s.set(1);
                     console.log(snapshot.val() + " " + "checking")
 
                 break;
