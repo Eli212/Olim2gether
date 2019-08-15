@@ -86,6 +86,7 @@ function checking_status(recipientId, text){
                     case 1:
                         sendMessage(recipientId, { text: "pipi" });
                          console.log("pipi");
+                         refer.update({status: 2});
                         break;
                     default:
                         break;
