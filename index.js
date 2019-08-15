@@ -81,22 +81,23 @@ function checking_status(recipientId, text){
             status.on('value', snapshot =>{
                 var finalStatus = snapshot.val();
                 console.log("kkkk: " + finalStatus)
+                switch(finalStatus){
+                case 0:
+                    sendMessage(recipientId, { text: "POOP" });
+                    console.log("pipi")
+                    finalStatus.set(1);
+//                    s.set(1);
+                    console.log(snapshot.val() + " " + "checking")
+
+                break;
+                case 1:
+                    sendMessage(recipientId, { text: "POOP" });
+                break;
+                default:
+
+            }
             });
-//            switch(status){
-//                case 0:
-//                    sendMessage(recipientId, { text: "POOP" });
-//                    console.log("pipi")
-//                    status.set(1);
-////                    s.set(1);
-//                    console.log(snapshot.val() + " " + "checking")
-//
-//                break;
-//                case 1:
-//                    sendMessage(recipientId, { text: "POOP" });
-//                break;
-//                default:
-//
-//            }
+
 
 
        }
