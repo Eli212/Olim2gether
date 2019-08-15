@@ -129,10 +129,12 @@ function checking_status(recipientId, text){
                     case 1:
                         con1(recipientId, text)
                         console.log("pipi");
-                        console.log(text+" 000000000000000000")
+                        //console.log(text+" 000000000000000000")
                         refer.update({status: 2});
 
                         break;
+                    case 2:
+                        console.log("case 2: "+text)
                     default:
                         break;
                 }
