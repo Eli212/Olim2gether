@@ -41,10 +41,14 @@ app.get('/webhook', function(req, res) {
         res.send('Invalid verify token');
     }
 });
+function startCon(recipientId, text){
+    sendMessage(recipientId, { text: "Hello Tomer how can i help you?" });
+}
 
 // handler receiving messages
 app.post('/webhook', function(req, res) {
     var events = req.body.entry[0].messaging;
+    startCon(recipientId, text);
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
@@ -59,9 +63,7 @@ app.post('/webhook', function(req, res) {
     }
     res.sendStatus(200);
 });
-function startCon(recipientId, text){
-    sendMessage(recipientId, { text: "Hello Tomer how can i help you?" });
-}
+
 function checking_status(recipientId, text){
 
     var refer = firebase.database().ref("users/" + recipientId);
@@ -83,7 +85,7 @@ function checking_status(recipientId, text){
         var status = snapshot.val();
         switch(status){
                     case 0:
-                        startCon(recipientId, text);
+                       // startCon(recipientId, text);
                         console.log("poop");
                         refer.update({status: 1});
 
