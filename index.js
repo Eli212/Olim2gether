@@ -73,6 +73,9 @@ app.post('/webhook', function(req, res) {
 function startCon(recipientId, text){
     sendMessage(recipientId, { text: "To start conversation please enter anything.\nFor back to the menu in any stage, enter B" });
 }
+function con0(recipientId, text){
+    sendMessage(recipientId, { text: "Before we get started, lets get to know each other.\nPlease write the following information about yourself:\nfull name, phone number, languages, age." });
+}
 function checking_status(recipientId, text){
 
     var refer = firebase.database().ref("users/" + recipientId);
@@ -95,6 +98,7 @@ function checking_status(recipientId, text){
         var status = snapshot.val();
         switch(status){
                     case 0:
+                        con0(recipientId, text);
                         //startCon(recipientId, text);
                         console.log("poop");
                         refer.update({status: 1});
