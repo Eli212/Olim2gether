@@ -48,9 +48,9 @@ app.post('/webhook', function(req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-//            stam();
+            stam();
             //testing(event.sender.id, event.message.text);
-            checking_status(event.sender.id, event.message.text);
+//            checking_status(event.sender.id, event.message.text);
 //            if (!kittenMessage(event.sender.id, event.message.text)) {
 //               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
 //            }
@@ -62,19 +62,24 @@ app.post('/webhook', function(req, res) {
 });
 
 //function stam() {
-//    var refer = firebase.database().ref("dinner");
-//    return refer.once('value').then(function(snapshot) {
+    var refer = firebase.database().ref("dinner");
+    return refer.once('value').then(function(snapshot) {
 //        var aaa = snapshot.val()
 //        console.log(aaa[0]);
-//
-//    });
-//};
+          var aaa = refer.child('0/numba');
+          console.log('1: ' + aaa)
+//          console.log('2: ' + aaa.val())
+    });
+};
 
 function startCon(recipientId, text){
     sendMessage(recipientId, { text: "To start conversation please enter anything.\nFor back to the menu in any stage, enter B" });
 }
 function con0(recipientId, text){
     sendMessage(recipientId, { text: "Before we get started, lets get to know each other.\nPlease write the following information about yourself:\nfull name, phone number, languages, age." });
+}
+function con1(recipientId, text){
+    sendMessage(recipientId, { text: "" });
 }
 function checking_status(recipientId, text){
 
