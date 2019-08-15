@@ -64,7 +64,9 @@ app.post('/webhook', function(req, res) {
 function stam() {
     var refer = firebase.database().ref("dinner");
     return refer.once('value').then(function(snapshot) {
-        console.log(snapshot.val());
+        var aaa = snapshot.val()
+        console.log(aaa[0]);
+
     });
 };
 
