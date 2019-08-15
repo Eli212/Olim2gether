@@ -72,10 +72,11 @@ function checking_status(recipientId, text){
                 "status": 0
               });
 
-    }
+    }else{
         //var status = (snapshot.val() && snapshot.val().username) || 'Anonymous';
         console.log("asd: " + snapshot.val());
 //        refer.update({status: 1});
+        var status = snapshot.val();
         switch(status){
                     case 0:
                         sendMessage(recipientId, { text: "POOP" });
@@ -91,6 +92,7 @@ function checking_status(recipientId, text){
                         break;
                     default:
                         break;
+                }
                 }
 
         });
