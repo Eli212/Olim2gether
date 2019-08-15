@@ -58,6 +58,42 @@ app.post('/webhook', function(req, res) {
     }
     res.sendStatus(200);
 });
+function checking_status(recipientId, text){
+    var ref = firebase.database().ref("users/" + recipientId);
+
+    ref.on("value", function(snapshot) {
+       var obj = JSON.parse(snapshot.val())
+       if (snapshot.val() == null) { // New User //
+          ref.set({
+            "name": "Cars",
+            "pageId": "23",
+            "storeURL": "/app/cars/gallery",
+            "status": 0
+          });
+       }
+       else{
+            switch(obj.status){
+                case 0:
+                    sendMessage(recipientId, { text: "POOP" });
+                    ref.child('status').set(1);
+                    console.log(snapshot.val() + " " + "checking")
+
+                break;
+                case 1:
+                    sendMessage(recipientId, { text: "POOP" });
+                break;
+                default:
+
+            }
+
+
+       }
+    }, function (error) {
+       console.log("Error: " + error.code);
+    });
+
+
+}
 
 function testing2(phone_number) {
     console.log("userref: " + phone_number)
@@ -109,7 +145,9 @@ function testing(recipientId, text) {
     var ref = firebase.database().ref("users/" + recipientId);
     ref.on("value", function(snapshot) {
        console.log(snapshot.val());
+
        console.log(text + " " +recipientId)///////////testing
+
        if (snapshot.val() == null) { // New User //
           ref.set({
             name: "Cars",
@@ -120,6 +158,8 @@ function testing(recipientId, text) {
     }, function (error) {
        console.log("Error: " + error.code);
     });
+
+
 
 };
 
