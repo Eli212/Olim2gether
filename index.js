@@ -60,14 +60,10 @@ app.post('/webhook', function(req, res) {
     res.sendStatus(200);
 });
 function checking_status(recipientId, text){
-    var ref = firebase.database().ref("users/" + recipientId);
+    var refer = firebase.database().ref("users/" + recipientId);
 
     ref.on("value", function(snapshot) {
-       var obj = JSON.parse(snapshot.val())
-       console.log("-------------")
-       console.log(obj.name)
-       console.log(obj.status)
-       console.log("-------------")
+
        if (snapshot.val() == null) { // New User //
           ref.set({
             "name": "Cars",
@@ -78,10 +74,12 @@ function checking_status(recipientId, text){
 
        }
        else{
-            switch(obj.status){
+            var status = refer.child('status');
+            switch(status){
                 case 0:
                     sendMessage(recipientId, { text: "POOP" });
-                    ref.child('status').set(1);
+                    console.log("pipi")
+                    status.set(1);
                     console.log(snapshot.val() + " " + "checking")
 
                 break;
