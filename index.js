@@ -45,7 +45,6 @@ app.get('/webhook', function(req, res) {
 // handler receiving messages
 app.post('/webhook', function(req, res) {
     var events = req.body.entry[0].messaging;
-    startCon()
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
@@ -72,7 +71,7 @@ function checking_status(recipientId, text){
                 "storeURL": "/app/cars/gallery",
                 "status": 0
               });
-              
+
 
     }else{
         //var status = (snapshot.val() && snapshot.val().username) || 'Anonymous';
@@ -81,7 +80,7 @@ function checking_status(recipientId, text){
         var status = snapshot.val();
         switch(status){
                     case 0:
-                        sendMessage(recipientId, { text: "POOP" });
+                        startCon()
                         console.log("poop");
                         refer.update({status: 1});
 
