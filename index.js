@@ -64,7 +64,7 @@ function checking_status(recipientId, text){
     var refer = firebase.database().ref("users/" + recipientId + '/status');
     return refer.once('value').then(function(snapshot) {
         //var status = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-        console.log("asd: " + status.val());
+        console.log("asd: " + snapshot.val());
         });
 //    refer.on("value", function(snapshot) {
 //
