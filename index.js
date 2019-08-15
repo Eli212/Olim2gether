@@ -61,11 +61,12 @@ app.post('/webhook', function(req, res) {
 });
 function checking_status(recipientId, text){
 
-    var refer = firebase.database().ref("users/" + recipientId + '/status');
-    return refer.once('value').then(function(snapshot) {
+    var refer = firebase.database().ref("users/" + recipientId);
+    return refer.child('status').once('value').then(function(snapshot) {
         //var status = (snapshot.val() && snapshot.val().username) || 'Anonymous';
         console.log("asd: " + snapshot.val());
         refer.update({status: 1});
+        
         });
 //    refer.on("value", function(snapshot) {
 //
