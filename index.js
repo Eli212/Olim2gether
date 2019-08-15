@@ -41,19 +41,16 @@ app.get('/webhook', function(req, res) {
         res.send('Invalid verify token');
     }
 });
-function startCon(recipientId, text){
-    sendMessage(recipientId, { text: "Hello Tomer how can i help you?" });
-}
 
 // handler receiving messages
 app.post('/webhook', function(req, res) {
     var events = req.body.entry[0].messaging;
-    startCon(recipientId, text);
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
+            stam();
             //testing(event.sender.id, event.message.text);
-            checking_status(event.sender.id, event.message.text);
+            //checking_status(event.sender.id, event.message.text);
 //            if (!kittenMessage(event.sender.id, event.message.text)) {
 //               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
 //            }
@@ -64,6 +61,17 @@ app.post('/webhook', function(req, res) {
     res.sendStatus(200);
 });
 
+function stam() {
+    var refer = firebase.database().ref("dinner");
+    var i;
+    for (i = 0; i < 5; i++) {
+        refer.child(i).update({"numba": i});
+    };
+};
+
+function startCon(recipientId, text){
+    sendMessage(recipientId, { text: "Hello Tomer how can i help you?" });
+}
 function checking_status(recipientId, text){
 
     var refer = firebase.database().ref("users/" + recipientId);
