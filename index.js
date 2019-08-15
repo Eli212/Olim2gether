@@ -59,7 +59,7 @@ app.post('/webhook', function(req, res) {
     }
     res.sendStatus(200);
 });
-async function checking_status(recipientId, text){
+function checking_status(recipientId, text){
     var refer = firebase.database().ref("users/" + recipientId);
 
     refer.on("value", function(snapshot) {
@@ -82,13 +82,13 @@ async function checking_status(recipientId, text){
                         sendMessage(recipientId, { text: "POOP" });
                         console.log("poop");
                         refer.update({status: 1});
-                        await sleep(1000)
+
                         break;
                     case 1:
                         sendMessage(recipientId, { text: "pipi" });
                          console.log("pipi");
                          refer.update({status: 2});
-                         await sleep(1000)
+
                         break;
                     default:
                         break;
