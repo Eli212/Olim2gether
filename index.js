@@ -48,7 +48,6 @@ app.post('/webhook', function(req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            testing2(event.sender.psid)
             testing(event.sender.id, event.message.text);
 //            if (!kittenMessage(event.sender.id, event.message.text)) {
 //               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
@@ -110,6 +109,7 @@ function testing(recipientId, text) {
     var ref = firebase.database().ref("users/" + recipientId);
     ref.on("value", function(snapshot) {
        console.log(snapshot.val());
+       console.log(text + " " +recipientId)///////////testing
        if (snapshot.val() == null) { // New User //
           ref.set({
             name: "Cars",
