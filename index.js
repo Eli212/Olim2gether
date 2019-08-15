@@ -108,7 +108,7 @@ function checking_status(recipientId, text){
                 "fullName": "Cars",
                 "phoneNumber": "23",
                 "languages": [],
-                "age":20
+                "age":20,
                 "storeURL": "/app/cars/gallery",
                 "status": 0
               });
