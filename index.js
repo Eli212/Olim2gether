@@ -48,9 +48,9 @@ app.post('/webhook', function(req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            stam();
+//            stam();
             //testing(event.sender.id, event.message.text);
-//            checking_status(event.sender.id, event.message.text);
+            checking_status(event.sender.id, event.message.text);
 //            if (!kittenMessage(event.sender.id, event.message.text)) {
 //               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
 //            }
@@ -67,7 +67,7 @@ function stam() {
 //        var aaa = snapshot.val()
 //        console.log(aaa[0]);
           var aaa = refer.child('0/numba');
-          console.log('1: ' + aaa.val())
+//          console.log('1: ' + aaa.val())
 //          console.log('2: ' + aaa.val())
     });
 
@@ -80,7 +80,23 @@ function con0(recipientId, text){
     sendMessage(recipientId, { text: "Before we get started, lets get to know each other.\nPlease write the following information about yourself:\nfull name, phone number, languages, age." });
 }
 function con1(recipientId, text){
-    sendMessage(recipientId, { text: "" });
+    message = {
+    "text": "Pick a color:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"YES",
+        "payload":"<POSTBACK_PAYLOAD>",
+
+      },{
+        "content_type":"text",
+        "title":"NO",
+        "payload":"<POSTBACK_PAYLOAD>",
+
+      }
+    ]
+  }
+    sendMessage(recipientId, message);
 }
 function checking_status(recipientId, text){
 
@@ -111,9 +127,10 @@ function checking_status(recipientId, text){
 
                         break;
                     case 1:
+                        con1(recipientId, text)
                         sendMessage(recipientId, { text: "pipi" });
-                         console.log("pipi");
-                         refer.update({status: 2});
+                        console.log("pipi");
+                        refer.update({status: 2});
 
                         break;
                     default:
