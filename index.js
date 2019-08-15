@@ -105,8 +105,10 @@ function checking_status(recipientId, text){
     return refer.child('status').once('value').then(function(snapshot) {
         if (snapshot.val() == null){
         refer.set({
-                "name": "Cars",
-                "pageId": "23",
+                "fullName": "Cars",
+                "phoneNumber": "23",
+                "languages": [],
+                "age":20
                 "storeURL": "/app/cars/gallery",
                 "status": 0
               });
@@ -134,7 +136,13 @@ function checking_status(recipientId, text){
 
                         break;
                     case 2:
-                        console.log("case 2: "+text)
+                        if(text == "YES"){
+
+                        }
+
+                        else{
+
+                        }
                     default:
                         break;
                 }
