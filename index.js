@@ -60,40 +60,49 @@ app.post('/webhook', function(req, res) {
     res.sendStatus(200);
 });
 function checking_status(recipientId, text){
-    var refer = firebase.database().ref("users/" + recipientId);
-
-    refer.on("value", function(snapshot) {
-
-       if (snapshot.val() == null) { // New User //
-          refer.set({
-            "name": "Cars",
-            "pageId": "23",
-            "storeURL": "/app/cars/gallery",
-            "status": 0
-          });
-
-       }
-       else{
-            var status = refer.child('status');
-            status.on('value', snapshot =>{
-                var finalStatus = snapshot.val();
-                switch(finalStatus){
-                    case 0:
-                        sendMessage(recipientId, { text: "POOP" });
-                        console.log("poop");
-                        refer.update({status: 1});
-
-                        break;
-                    case 1:
-                        sendMessage(recipientId, { text: "pipi" });
-                         console.log("pipi");
-                         refer.update({status: 2});
-
-                        break;
-                    default:
-                        break;
-                }
-            });
+    var refer = firebase.database().ref("users/" + recipientId + '/status');
+    return refer.once('value').then(function(snapshot) {
+        //var status = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+        console.log("asd: " + status.val())
+        });
+//    refer.on("value", function(snapshot) {
+//
+//       if (snapshot.val() == null) { // New User //
+//          refer.set({
+//            "name": "Cars",
+//            "pageId": "23",
+//            "storeURL": "/app/cars/gallery",
+//            "status": 0
+//          });
+//
+//       }
+//       else
+//       {
+//
+//       }
+//
+//       });
+//
+//            var status = refer.child('status');
+//            status.on('value', snapshot =>{
+//                var finalStatus = snapshot.val();
+//                switch(finalStatus){
+//                    case 0:
+//                        sendMessage(recipientId, { text: "POOP" });
+//                        console.log("poop");
+//                        refer.update({status: 1});
+//
+//                        break;
+//                    case 1:
+//                        sendMessage(recipientId, { text: "pipi" });
+//                         console.log("pipi");
+//                         refer.update({status: 2});
+//
+//                        break;
+//                    default:
+//                        break;
+//                }
+//            });
 
 
 
