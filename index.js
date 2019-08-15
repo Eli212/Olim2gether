@@ -60,10 +60,11 @@ app.post('/webhook', function(req, res) {
     res.sendStatus(200);
 });
 function checking_status(recipientId, text){
+
     var refer = firebase.database().ref("users/" + recipientId + '/status');
     return refer.once('value').then(function(snapshot) {
         //var status = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-        console.log("asd: " + status.val())
+        console.log("asd: " + status.val());
         });
 //    refer.on("value", function(snapshot) {
 //
@@ -106,10 +107,10 @@ function checking_status(recipientId, text){
 
 
 
-       }
-    }, function (error) {
-       console.log("Error: " + error.code);
-    });
+//       }
+//    }, function (error) {
+//       console.log("Error: " + error.code);
+//    });
 
 
 }
