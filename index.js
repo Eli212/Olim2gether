@@ -61,7 +61,7 @@ app.post('/webhook', function(req, res) {
     res.sendStatus(200);
 });
 
-//function stam() {
+function stam() {
     var refer = firebase.database().ref("dinner");
     return refer.once('value').then(function(snapshot) {
 //        var aaa = snapshot.val()
@@ -70,7 +70,7 @@ app.post('/webhook', function(req, res) {
           console.log('1: ' + aaa)
 //          console.log('2: ' + aaa.val())
     });
-    
+
 };
 
 function startCon(recipientId, text){
