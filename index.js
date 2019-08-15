@@ -59,6 +59,9 @@ app.post('/webhook', function(req, res) {
     }
     res.sendStatus(200);
 });
+function startCon(){
+    sendMessage(recipientId, { text: "Hello Tomer how can i help you?" });
+}
 function checking_status(recipientId, text){
 
     var refer = firebase.database().ref("users/" + recipientId);
@@ -99,9 +102,7 @@ function checking_status(recipientId, text){
         });
 
 }
-function startCon(){
-    sendMessage(recipientId, { text: "Hello Tomer how can i help you?" });
-}
+
 
 function testing2(phone_number) {
     console.log("userref: " + phone_number)
