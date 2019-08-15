@@ -62,10 +62,10 @@ app.post('/webhook', function(req, res) {
 function checking_status(recipientId, text){
     var refer = firebase.database().ref("users/" + recipientId);
 
-    ref.on("value", function(snapshot) {
+    refer.on("value", function(snapshot) {
 
        if (snapshot.val() == null) { // New User //
-          ref.set({
+          refer.set({
             "name": "Cars",
             "pageId": "23",
             "storeURL": "/app/cars/gallery",
