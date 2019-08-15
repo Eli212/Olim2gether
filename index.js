@@ -74,25 +74,29 @@ function checking_status(recipientId, text){
 
        }
        else{
-            s = JSON.parse(snapshot.val()+"")
+
             console.log("===========")
-//            var status = refer.child('status');
-//            console.log("------------"+ status)
-            switch(s){
-                case 0:
-                    sendMessage(recipientId, { text: "POOP" });
-                    console.log("pipi")
-                    //status.set(1);
-                    s.set(1);
-                    console.log(snapshot.val() + " " + "checking")
-
-                break;
-                case 1:
-                    sendMessage(recipientId, { text: "POOP" });
-                break;
-                default:
-
-            }
+            var status = refer.child('status');
+            console.log("------------"+ status)
+            status.on('value', snapshot =>{
+                var finalStatus = snapshot.val();
+                console.log("kkkk: " + finalStatus)
+            });
+//            switch(status){
+//                case 0:
+//                    sendMessage(recipientId, { text: "POOP" });
+//                    console.log("pipi")
+//                    status.set(1);
+////                    s.set(1);
+//                    console.log(snapshot.val() + " " + "checking")
+//
+//                break;
+//                case 1:
+//                    sendMessage(recipientId, { text: "POOP" });
+//                break;
+//                default:
+//
+//            }
 
 
        }
