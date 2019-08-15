@@ -70,6 +70,7 @@ app.post('/webhook', function(req, res) {
           console.log('1: ' + aaa)
 //          console.log('2: ' + aaa.val())
     });
+    
 };
 
 function startCon(recipientId, text){
