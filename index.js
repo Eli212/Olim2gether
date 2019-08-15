@@ -63,10 +63,9 @@ app.post('/webhook', function(req, res) {
 
 function stam() {
     var refer = firebase.database().ref("dinner");
-    var i;
-    for (i = 0; i < 5; i++) {
-        refer.child(i).update({"numba": i});
-    };
+    return refer.once('value').then(function(snapshot) {
+        console.log(snapshot.val());
+    });
 };
 
 function startCon(recipientId, text){
