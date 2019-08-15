@@ -71,6 +71,7 @@ function checking_status(recipientId, text){
                 "storeURL": "/app/cars/gallery",
                 "status": 0
               });
+              startCon();
 
     }else{
         //var status = (snapshot.val() && snapshot.val().username) || 'Anonymous';
@@ -96,53 +97,10 @@ function checking_status(recipientId, text){
                 }
 
         });
-//    refer.on("value", function(snapshot) {
-//
-//       if (snapshot.val() == null) { // New User //
-//          refer.set({
-//            "name": "Cars",
-//            "pageId": "23",
-//            "storeURL": "/app/cars/gallery",
-//            "status": 0
-//          });
-//
-//       }
-//       else
-//       {
-//
-//       }
-//
-//       });
-//
-//            var status = refer.child('status');
-//            status.on('value', snapshot =>{
-//                var finalStatus = snapshot.val();
-//                switch(finalStatus){
-//                    case 0:
-//                        sendMessage(recipientId, { text: "POOP" });
-//                        console.log("poop");
-//                        refer.update({status: 1});
-//
-//                        break;
-//                    case 1:
-//                        sendMessage(recipientId, { text: "pipi" });
-//                         console.log("pipi");
-//                         refer.update({status: 2});
-//
-//                        break;
-//                    default:
-//                        break;
-//                }
-//            });
 
-
-
-//       }
-//    }, function (error) {
-//       console.log("Error: " + error.code);
-//    });
-
-
+}
+function startCon(){
+    sendMessage(recipientId, { text: "Hello Tomer how can i help you?" });
 }
 
 function testing2(phone_number) {
