@@ -80,7 +80,7 @@ function checking_status(recipientId, text){
         var status = snapshot.val();
         switch(status){
                     case 0:
-                        startCon()
+                        startCon();
                         console.log("poop");
                         refer.update({status: 1});
 
