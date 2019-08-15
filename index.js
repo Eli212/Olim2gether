@@ -62,7 +62,9 @@ app.post('/webhook', function(req, res) {
 function checking_status(recipientId, text){
 
     var refer = firebase.database().ref("users/" + recipientId);
-    if (snapshot.val() == null){
+
+    return refer.child('status').once('value').then(function(snapshot) {
+        if (snapshot.val() == null){
         refer.set({
                 "name": "Cars",
                 "pageId": "23",
@@ -71,7 +73,6 @@ function checking_status(recipientId, text){
               });
 
     }
-    return refer.child('status').once('value').then(function(snapshot) {
         //var status = (snapshot.val() && snapshot.val().username) || 'Anonymous';
         console.log("asd: " + snapshot.val());
 //        refer.update({status: 1});
