@@ -67,7 +67,7 @@ function stam() {
 //        var aaa = snapshot.val()
 //        console.log(aaa[0]);
           var aaa = refer.child('0/numba');
-          console.log('1: ' + aaa)
+          console.log('1: ' + aaa.val())
 //          console.log('2: ' + aaa.val())
     });
 
