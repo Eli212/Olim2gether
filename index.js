@@ -81,17 +81,17 @@ function con0(recipientId, text){
 }
 function con1(recipientId, text){
     message = {
-    "text": "Pick a color:",
+    "text": "Would you like to enter to a list of people whom helps Olim with daily problems such as go to see apartments with them or just talking with them?",
     "quick_replies":[
       {
         "content_type":"text",
         "title":"YES",
-        "payload":"<POSTBACK_PAYLOAD>",
+        "payload":"<POSTBACK_PAYLOAD>"
 
       },{
         "content_type":"text",
         "title":"NO",
-        "payload":"<POSTBACK_PAYLOAD>",
+        "payload":"<POSTBACK_PAYLOAD>"
 
       }
     ]
@@ -128,7 +128,6 @@ function checking_status(recipientId, text){
                         break;
                     case 1:
                         con1(recipientId, text)
-                        sendMessage(recipientId, { text: "pipi" });
                         console.log("pipi");
                         refer.update({status: 2});
 
