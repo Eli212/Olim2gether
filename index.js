@@ -74,7 +74,9 @@ function checking_status(recipientId, text){
 
        }
        else{
+            console.log("===========")
             var status = refer.child('status');
+            console.log("------------")
             switch(status){
                 case 0:
                     sendMessage(recipientId, { text: "POOP" });
