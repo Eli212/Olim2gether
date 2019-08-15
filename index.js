@@ -59,7 +59,7 @@ app.post('/webhook', function(req, res) {
     }
     res.sendStatus(200);
 });
-function startCon(){
+function startCon(recipientId, text){
     sendMessage(recipientId, { text: "Hello Tomer how can i help you?" });
 }
 function checking_status(recipientId, text){
