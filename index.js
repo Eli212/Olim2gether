@@ -48,9 +48,9 @@ app.post('/webhook', function(req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            stam();
+//            stam();
             //testing(event.sender.id, event.message.text);
-            //checking_status(event.sender.id, event.message.text);
+            checking_status(event.sender.id, event.message.text);
 //            if (!kittenMessage(event.sender.id, event.message.text)) {
 //               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
 //            }
@@ -61,17 +61,17 @@ app.post('/webhook', function(req, res) {
     res.sendStatus(200);
 });
 
-function stam() {
-    var refer = firebase.database().ref("dinner");
-    return refer.once('value').then(function(snapshot) {
-        var aaa = snapshot.val()
-        console.log(aaa[0]);
-
-    });
-};
+//function stam() {
+//    var refer = firebase.database().ref("dinner");
+//    return refer.once('value').then(function(snapshot) {
+//        var aaa = snapshot.val()
+//        console.log(aaa[0]);
+//
+//    });
+//};
 
 function startCon(recipientId, text){
-    sendMessage(recipientId, { text: "Hello Tomer how can i help you?" });
+    sendMessage(recipientId, { text: "To start conversation please enter anything.\nFor back to the menu in any stage, enter B" });
 }
 function checking_status(recipientId, text){
 
@@ -85,6 +85,7 @@ function checking_status(recipientId, text){
                 "storeURL": "/app/cars/gallery",
                 "status": 0
               });
+              startCon(recipientId, text);
 
 
     }else{
@@ -94,7 +95,7 @@ function checking_status(recipientId, text){
         var status = snapshot.val();
         switch(status){
                     case 0:
-                       // startCon(recipientId, text);
+                        //startCon(recipientId, text);
                         console.log("poop");
                         refer.update({status: 1});
 
