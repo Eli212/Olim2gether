@@ -65,6 +65,7 @@ function checking_status(recipientId, text){
     return refer.once('value').then(function(snapshot) {
         //var status = (snapshot.val() && snapshot.val().username) || 'Anonymous';
         console.log("asd: " + snapshot.val());
+        refer.update({status: 1});
         });
 //    refer.on("value", function(snapshot) {
 //
