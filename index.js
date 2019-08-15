@@ -63,7 +63,7 @@ function checking_status(recipientId, text){
     var ref = firebase.database().ref("users/" + recipientId);
 
     ref.on("value", function(snapshot) {
-       var obj = JSON.parse(snapshot.val())
+       var obj = JSON.parse(snapshot)
        if (snapshot.val() == null) { // New User //
           ref.set({
             "name": "Cars",
