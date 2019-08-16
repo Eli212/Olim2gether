@@ -2,6 +2,10 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
+var tempDID;
+var uCity;
+var uKosher;
+var uType;
 
 ///////////////// FIREBASE /////////////////
 var firebase = require("firebase/app");
@@ -348,27 +352,30 @@ function checking_status(recipientId, text){
                         sendMessage(recipientId, { text: "Thank you for helping the olim. the olim will contact you :)" });
                         break;
                     case 200:
-                        var tempDID;
-                        var uCity;
-                        var uKosher;
-                        var uType;
                         refer.update({city: text});
                          return referDinner.child('DID').once('value').then(function(snapshotDin) {
                          tempDID = snapshotDin.val();
-                         console.log(tempDID)
-                         sendMessage(recipientId, { text: tempDID });
+//                         console.log(tempDID)
+//                         sendMessage(recipientId, { text: tempDID });
+                             return referDinner.child('city').once('value').then(function(snapshotDin) {
+                             uCity = snapshotDin.val();
+                                 return referDinner.child('dinnerType').once('value').then(function(snapshotDin) {
+                                 uType = snapshotDin.val();
+                                     return referDinner.child('kosher').once('value').then(function(snapshotDin) {
+                                     uKosher = snapshotDin.val();
+                                     });
+                                 });
+                             });
                          });
-//                         return referDinner.child('city').once('value').then(function(snapshotDin) {
-//                         uCity = snapshotDin.val();
-//                         });
-//                         return referDinner.child('dinnerType').once('value').then(function(snapshotDin) {
-//                         uType = snapshotDin.val();
-//                         });
-//                         return referDinner.child('kosher').once('value').then(function(snapshotDin) {
-//                         uKosher = snapshotDin.val();
-//                         });
+                         refer.update({status: 300});
 //                        dinnerAlgo(refer, uCity, uKosher, uType)
+                        break;
+                    case 300:
                         sendMessage(recipientId, { text: "We hope you will find someone nice to eat with :D" });
+                        sendMessage(recipientId, { text: tempDID});
+                        sendMessage(recipientId, { text: uCity});
+                        sendMessage(recipientId, { text: uType});
+                        sendMessage(recipientId, { text: uKosher});
                         break;
                     default:
                         break;
