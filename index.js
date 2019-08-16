@@ -244,9 +244,12 @@ function checking_status(recipientId, text){
                         }
                     case 3:
                         con2(recipientId, text);
-                        if(text == "Host a dinner"){
-                            sleep(3000);
-                            refer.update({status: 31});
+                        while(!(text == "Host a dinner")){
+                            if (text == "Host a dinner"){
+                                refer.update({status: 31});
+                            }
+
+
 
                         }
                         else{
