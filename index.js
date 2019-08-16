@@ -103,12 +103,12 @@ function con1(recipientId, text){
     "quick_replies":[
       {
         "content_type":"text",
-        "title":"YES",
+        "title":"Yes",
         "payload":"<POSTBACK_PAYLOAD>"
 
       },{
         "content_type":"text",
-        "title":"NO",
+        "title":"No",
         "payload":"<POSTBACK_PAYLOAD>"
 
       }
@@ -139,8 +139,7 @@ function con2(recipientId, text){
                 "content_type":"text",
                 "title":"Join a dinner",
                 "payload":"<POSTBACK_PAYLOAD>"
-              },
-              {
+              },{
                 "content_type":"text",
                 "title":"Create a pub gathering",
                 "payload":"<POSTBACK_PAYLOAD>"
@@ -192,11 +191,11 @@ function con311(recipientId, text){
     "text": "Is the dinner kosher?",
     "quick_replies":[{
         "content_type":"text",
-        "title":"Yes!!",
+        "title":"Yes",
         "payload":"<POSTBACK_PAYLOAD>"
       },{
         "content_type":"text",
-        "title":"No, sorry",
+        "title":"No",
         "payload":"<POSTBACK_PAYLOAD>"
       }
     ]
@@ -228,7 +227,7 @@ function con321(recipientId, text){
     "text": "Are you eating kosher?",
     "quick_replies":[{
         "content_type":"text",
-        "title":"Yes, please",
+        "title":"Yes",
         "payload":"<POSTBACK_PAYLOAD>"
       },{
         "content_type":"text",
@@ -240,7 +239,7 @@ function con321(recipientId, text){
     sendMessage(recipientId, message);
 }
 function con34(recipientId, text){
-    sendMessage(recipientId, { text: "please enter the city you live in" });
+    sendMessage(recipientId, { text: "Please enter the city you live in" });
 }
 function con35(recipientId, text){
     sendMessage(recipientId, { text: "Please enter the city and street(format --> city, street)" });
@@ -256,7 +255,6 @@ function checking_status(recipientId, text){
                 "phoneNumber": "23",
                 "languages": [],
                 "age":20,
-                "storeURL": "/app/cars/gallery",
                 "status": 0,
                 "dinnerType": null,
                 "kosher": null,
@@ -284,7 +282,7 @@ function checking_status(recipientId, text){
 
                         break;
                     case 2:
-                        if(text == "YES"){
+                        if(text == "Yes"){
                             refer.update({status: 3});
                         }
 
@@ -322,36 +320,36 @@ function checking_status(recipientId, text){
                         break;
                     case 31:
                         con31(recipientId, text);
-                        referDinner.update({dinnerType: text});
                         refer.update({status: 311});
+                        referDinner.update({dinnerType: text});
                         break;
 
                     case 311:
                         con311(recipientId, text);
-                        referDinner.update({kosher: text});
                         refer.update({status: 35});
+                        referDinner.update({kosher: text});
                         break;
                     case 32:
                         con32(recipientId, text);
-                        refer.update({dinnerType: text});
                         refer.update({status: 321});
+                        refer.update({dinnerType: text});
                         break;
                     case 321:
                         con321(recipientId, text);
-                        refer.update({kosher: text});
                         refer.update({status: 34});
+                        refer.update({kosher: text});
                         break;
                     case 34:
                         con34(recipientId, text);
-                        refer.update({city: text});
                         refer.update({status: 100});
+                        refer.update({city: text});
                         break;
                     case 35:
                         con35(recipientId, text);
                         var live = text.split(",");
+                        refer.update({status: 100});
                         referDinner.update({city: live[0]});
                         referDinner.update({street: live[1]});
-                        refer.update({status: 100});
                         break;
                     default:
                         break;
