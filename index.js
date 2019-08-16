@@ -369,7 +369,6 @@ function checking_status(recipientId, text){
                                  });
                              });
                          });
-//                        dinnerAlgo(refer, uCity, uKosher, uType)
                         break;
                     case 300:
                         sendMessage(recipientId, { text: "We hope you will find someone nice to eat with :D" });
@@ -377,6 +376,8 @@ function checking_status(recipientId, text){
                         sendMessage(recipientId, { text: uCity});
                         sendMessage(recipientId, { text: uType});
                         sendMessage(recipientId, { text: uKosher});
+                        dinnerAlgo(refer, uCity, uKosher, uType)
+
                         break;
                     default:
                         break;
@@ -386,11 +387,6 @@ function checking_status(recipientId, text){
         });
 
 }
-
-
-function testing2(phone_number) {
-    console.log("userref: " + phone_number)
-};
 
 // generic function sending messages
 function sendMessage(recipientId, message) {
@@ -411,118 +407,6 @@ function sendMessage(recipientId, message) {
     });
 };
 
-function testing(recipientId, text) {
-
-    //  'https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young'
-    //// Send HTTP request to Azure Functions ////
-//    var theurl = 'https://olim-hackathon.firebaseio.com/'
-//    const request = require('request');
-//    request('https://poop2.azurewebsites.net/api/HttpTrigger1?code=CetbtwE9KeFOwaOtLtVUpSi6QiJGFFspjWwnbIOrL5SObgE5agWQQA==&name=young', function (error, response, body) {
-//      console.error('error:', error); // Print the error if one occurred
-//      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-//      console.log('body:', body); // Print the HTML for the Google homepage.
-//      // 1
-//      sendMessage(recipientId, { text: body });
-//      sendMessage(recipientId, { text: "POOP" });
-//    });
-    //// Write Data to Firebase
-//    var rootRef = firebase.database().ref();
-//    var storesRef = rootRef.child('app/cars');
-//    var newStoreRef = storesRef.push();
-//      newStoreRef.set({
-//        name: "Cars",
-//        "pageId": "23",
-//        "storeURL": "/app/cars/gallery"
-//      });
-
-    var ref = firebase.database().ref("users/" + recipientId);
-    ref.on("value", function(snapshot) {
-       console.log(snapshot.val());
-
-       console.log(text + " " +recipientId)///////////testing
-
-       if (snapshot.val() == null) { // New User //
-          ref.set({
-            name: "Cars",
-            "pageId": "23",
-            "storeURL": "/app/cars/gallery"
-          });
-       }
-    }, function (error) {
-       console.log("Error: " + error.code);
-    });
-
-
-
-};
-
-// send rich message with kitten
-function kittenMessage(recipientId, text) {
-
-    text = text || "";
-    var values = text.split(' ');
-
-    if (values.length === 3 && values[0] === 'kitten') {
-        if (Number(values[1]) > 0 && Number(values[2]) > 0) {
-
-            var imageUrl = "https://placekitten.com/" + Number(values[1]) + "/" + Number(values[2]);
-
-            message = {
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": [{
-                            "title": "Kitten",
-                            "subtitle": "Cute kitten picture",
-                            "image_url": imageUrl,
-                            "buttons": [{
-                                "type": "web_url",
-                                "url": imageUrl,
-                                "title": "Show kitten"
-                            }, {
-                                "type": "postback",
-                                "title": "I like this",
-                                "payload": "User " + recipientId + " likes kitten " + imageUrl,
-                            }]
-                        }]
-                    }
-                }
-            };
-
-            sendMessage(recipientId, message);
-
-            return true;
-        }
-    }
-    message = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "hello mr, how can i hep you?\n you can choose between a friday dinner and a social meeting:  ",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "friday dinner",
-                        "payload": "User " + recipientId + " likes kitten ",
-                    }, {
-                        "type": "postback",
-                        "title": "social meeting",
-                        "payload": "User " + recipientId + " likes kitten ",
-                    }]
-                }]
-            }
-        }
-    };
-
-    sendMessage(recipientId, message);
-
-    return true;
-
-    return false;
-
-};
 function dinnerAlgo(UID, uCity, uKosher, uType){
     var matches = [];
     var allUsers = firebase.database().ref("users");
@@ -531,6 +415,7 @@ function dinnerAlgo(UID, uCity, uKosher, uType){
             var dinnerRefer = firebase.database().ref("dinner");
             return dinnerRefer.once('value').then(function(snapshot1) {
                 var dinner = snapshot1.val();
+                sendMessage(recipientId, { text: dinner});
                 var DID;
                 for(DID = 0; DID < dinner.length; DID++){
                     return dinnerRefer.child(dinner[DID] + '/city').once('value').then(function(snapshotCity) {
