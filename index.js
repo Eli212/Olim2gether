@@ -333,10 +333,6 @@ function checking_status(recipientId, text){
                         break;
                     case 34:
                         refer.update({kosher: text});
-                        var tempDID;
-                        var uCity;
-                        var uKosher;
-                        var uType;
                         con34(recipientId, text);
                         refer.update({status: 200});
                         break;
@@ -352,10 +348,17 @@ function checking_status(recipientId, text){
                         sendMessage(recipientId, { text: "Thank you for helping the olim. the olim will contact you :)" });
                         break;
                     case 200:
+                        var tempDID;
+                        var uCity;
+                        var uKosher;
+                        var uType;
                         refer.update({city: text});
-//                         return referDinner.child('DID').once('value').then(function(snapshotDin) {
-//                         tempDID = snapshotDin.val();
-//                         });
+                         return referDinner.child('DID').once('value').then(function(snapshotDin) {
+                         tempDID = snapshotDin.val();
+                         });
+                         console.log(tempDID)
+                         sendMessage(recipientId, { text: tempDID });
+
 //                         return referDinner.child('city').once('value').then(function(snapshotDin) {
 //                         uCity = snapshotDin.val();
 //                         });
