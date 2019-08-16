@@ -107,11 +107,11 @@ function con1(recipientId, text){
 }
 function con2(recipientId, text){
 
-    var refer = firebase.database().ref("users/" + recipientId);
-    return refer.child('fullName').once('value').then(function(snapshot) {
-        var name  = snapshot.val()
+//    var refer = firebase.database().ref("users/" + recipientId);
+//    return refer.child('fullName').once('value').then(function(snapshot) {
+//        var name  = snapshot.val()
         message = {
-            "text": "Hello " + name + "!!, please enter on the thing your searching for",
+            "text": "Hello " + "    " + "!!, please enter on the thing your searching for",
             "quick_replies":[{
                 "content_type":"text",
                 "title":"Host a dinner",
@@ -144,7 +144,7 @@ function con2(recipientId, text){
             ]
           }
     sendMessage(recipientId, message);
-  }
+  //}
 }
 function checking_status(recipientId, text){
 
