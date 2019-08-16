@@ -107,9 +107,10 @@ function con1(recipientId, text, refer){
 }
 function con2(recipientId, text, refer){
 
-    var name = ""
+
     message = {
-    return refer.child('fullName').once('value').then(function(snapshot) {name  = snapshot.val()}
+    return refer.child('fullName').once('value').then(function(snapshot) {
+    var name  = snapshot.val()
     "text": "Hello " + name + "!!, please enter on the thing your searching for",
     "quick_replies":[{
         "content_type":"text",
@@ -143,6 +144,7 @@ function con2(recipientId, text, refer){
     ]
   }
     sendMessage(recipientId, message);
+  }
 }
 function checking_status(recipientId, text){
 
