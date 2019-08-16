@@ -363,11 +363,12 @@ function checking_status(recipientId, text){
                                  uType = snapshotDin.val();
                                      return referDinner.child('kosher').once('value').then(function(snapshotDin) {
                                      uKosher = snapshotDin.val();
+                                     checking_status(recipientId, text);
+                                     refer.update({status: 300});
                                      });
                                  });
                              });
                          });
-                         refer.update({status: 300});
 //                        dinnerAlgo(refer, uCity, uKosher, uType)
                         break;
                     case 300:
