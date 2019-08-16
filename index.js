@@ -380,6 +380,8 @@ function checking_status(recipientId, text){
                         refer.update({status: 100});
 //                        referDinner.update({city: live[0]});
 //                        referDinner.update({street: live[1]});
+                        break;
+                    case 100:
                         sendMessage(recipientId, { text: "Thank you for helping the olim. the olim will contact you :)" });
                         break;
                     default:
