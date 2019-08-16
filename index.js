@@ -257,7 +257,10 @@ function checking_status(recipientId, text){
                 "languages": [],
                 "age":20,
                 "storeURL": "/app/cars/gallery",
-                "status": 0
+                "status": 0,
+                "dinnerType": null,
+                "kosher": null,
+                "city": null
               });
               startCon(recipientId, text);
 
@@ -309,39 +312,44 @@ function checking_status(recipientId, text){
                                   });
                              }
                          });
-              startCon(recipientId, text);
                             refer.update({status: 31});
-
                         }else if(text == "Join a dinner"){
                              refer.update({status: 32});
                         }
-
                         checking_status(recipientId, text);
 
                         break;
                     case 31:
                         con31(recipientId, text);
+                        referDinner.update({dinnerType: text});
                         refer.update({status: 311});
                         break;
 
                     case 311:
                         con311(recipientId, text);
+                        referDinner.update({kosher: text});
                         refer.update({status: 35});
                         break;
                     case 32:
                         con32(recipientId, text);
+                        refer.update({dinnerType: text});
                         refer.update({status: 321});
                         break;
                     case 321:
                         con321(recipientId, text);
+                        refer.update({kosher: text});
                         refer.update({status: 34});
                         break;
                     case 34:
                         con34(recipientId, text);
+                        refer.update({city: text});
                         refer.update({status: 100});
                         break;
                     case 35:
                         con35(recipientId, text);
+                        var live = text.split(",");
+                        referDinner.update({city: live[0]});
+                        referDinner.update({street: live[1]});
                         refer.update({status: 100});
                         break;
                     default:
