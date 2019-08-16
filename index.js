@@ -248,7 +248,7 @@ function con35(recipientId, text){
 function checking_status(recipientId, text){
 
     var refer = firebase.database().ref("users/" + recipientId);
-
+    var referDinner = firebase.database().ref("dinner/" + recipientId);
     return refer.child('status').once('value').then(function(snapshot) {
         if (snapshot.val() == null){
         refer.set({
@@ -296,6 +296,17 @@ function checking_status(recipientId, text){
                     case 33:
                         console.log("case 33");
                         if (text == "Host a dinner"){
+                            return refer.child('DID').once('value').then(function(snapshot) {
+                                if (snapshot.val() == null){
+                                refer.set({
+                                        "DID": "Cars",
+                                        "userID": "23",
+                                        "dinnerType": "ddd",
+                                        "kosher":"hdhd",
+                                        "languages": "/app/cars/gallery",
+                                        "city": "gdgd",
+                                        "street": "hdh"
+                                      });
                             refer.update({status: 31});
 
                         }else if(text == "Join a dinner"){
