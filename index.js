@@ -316,7 +316,7 @@ function checking_status(recipientId, text){
                         }else if(text == "Join a dinner"){
                              refer.update({status: 32});
                         }
-                        checking_status(recipientId, text);
+                        //checking_status(recipientId, text);
 
                         break;
                     case 31:
@@ -329,7 +329,6 @@ function checking_status(recipientId, text){
                     case 311:
                         con311(recipientId, text);
                         refer.update({status: 35});
-                        sleep(3000);
                         referDinner.update({kosher: text});
                         break;
                     case 32:
