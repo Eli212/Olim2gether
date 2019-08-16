@@ -79,8 +79,14 @@ function startCon(recipientId, text){
 function con0(recipientId, text){
     sendMessage(recipientId, { text: "Before we get started, lets get to know each other.\nPlease write the following information about yourself:\nfull name, phone number, languages, age." });
 }
+function updateName(info, refer){
+    refer.update({fullName: info[0]});
+}
 function con1(recipientId, text){
-//    var info = text.split(",");
+    var info = text.split(",");
+    var refer = firebase.database().ref("users/" + recipientId);
+    updateName(info, refer)
+
 //    refer.update({status: 1});
 //
 //    return refer.child(info[i]).once('value').then(function(snapshot) {}
