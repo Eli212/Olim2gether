@@ -355,10 +355,9 @@ function checking_status(recipientId, text){
                         refer.update({city: text});
                          return referDinner.child('DID').once('value').then(function(snapshotDin) {
                          tempDID = snapshotDin.val();
-                         });
                          console.log(tempDID)
                          sendMessage(recipientId, { text: tempDID });
-
+                         });
 //                         return referDinner.child('city').once('value').then(function(snapshotDin) {
 //                         uCity = snapshotDin.val();
 //                         });
