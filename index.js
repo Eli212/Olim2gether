@@ -304,7 +304,7 @@ function checking_status(recipientId, text){
                                     "languages": [],
                                     "dinnerType":20,
                                     "kosher": "/app/cars/gallery",
-                                    "city": 0
+                                    "city": 0,
                                     "street": 0
                                   });
                              }
