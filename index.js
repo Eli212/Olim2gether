@@ -377,7 +377,7 @@ function checking_status(recipientId, text){
                         sendMessage(recipientId, { text: uType});
                         sendMessage(recipientId, { text: uKosher});
                         dinnerAlgo(refer, uCity, uKosher, uType)
-
+                        sendMessage(recipientId, { text: "Done" });
                         break;
                     default:
                         break;
