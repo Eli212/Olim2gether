@@ -123,7 +123,7 @@ function con2(recipientId, text){
             "text": "Hello " + "    " + "!!, please enter on the thing your searching for",
             "quick_replies":[{
                 "content_type":"text",
-                "title":"Hostadinner",
+                "title":"Host a dinner",
                 "payload":"<POSTBACK_PAYLOAD>"
               },{
                 "content_type":"text",
