@@ -108,41 +108,41 @@ function con1(recipientId, text){
 function con2(recipientId, text){
 
     var refer = firebase.database().ref("users/" + recipientId);
-    message = {
     return refer.child('fullName').once('value').then(function(snapshot) {
-    var name  = snapshot.val()
-    "text": "Hello " + name + "!!, please enter on the thing your searching for",
-    "quick_replies":[{
-        "content_type":"text",
-        "title":"Host a dinner",
-        "payload":"<POSTBACK_PAYLOAD>"
-      },{
-        "content_type":"text",
-        "title":"Join a dinner",
-        "payload":"<POSTBACK_PAYLOAD>"
-      },{
-        "content_type":"text",
-        "title":"Create a pub gathering",
-        "payload":"<POSTBACK_PAYLOAD>"
-      },{
-        "content_type":"text",
-        "title":"Join a pub gathering",
-        "payload":"<POSTBACK_PAYLOAD>"
-      },{
-        "content_type":"text",
-        "title":"Join a soccer game",
-        "payload":"<POSTBACK_PAYLOAD>"
-      },{
-        "content_type":"text",
-        "title":"Just someone to talk to",
-        "payload":"<POSTBACK_PAYLOAD>"
-      },{
-        "content_type":"text",
-        "title":"Someone to go with to see apartments",
-        "payload":"<POSTBACK_PAYLOAD>"
-      }
-    ]
-  }
+        var name  = snapshot.val()
+        message = {
+            "text": "Hello " + name + "!!, please enter on the thing your searching for",
+            "quick_replies":[{
+                "content_type":"text",
+                "title":"Host a dinner",
+                "payload":"<POSTBACK_PAYLOAD>"
+              },{
+                "content_type":"text",
+                "title":"Join a dinner",
+                "payload":"<POSTBACK_PAYLOAD>"
+              },{
+                "content_type":"text",
+                "title":"Create a pub gathering",
+                "payload":"<POSTBACK_PAYLOAD>"
+              },{
+                "content_type":"text",
+                "title":"Join a pub gathering",
+                "payload":"<POSTBACK_PAYLOAD>"
+              },{
+                "content_type":"text",
+                "title":"Join a soccer game",
+                "payload":"<POSTBACK_PAYLOAD>"
+              },{
+                "content_type":"text",
+                "title":"Just someone to talk to",
+                "payload":"<POSTBACK_PAYLOAD>"
+              },{
+                "content_type":"text",
+                "title":"Someone to go with to see apartments",
+                "payload":"<POSTBACK_PAYLOAD>"
+              }
+            ]
+          }
     sendMessage(recipientId, message);
   }
 }
