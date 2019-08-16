@@ -320,16 +320,23 @@ function checking_status(recipientId, text){
 
                         break;
                     case 31:
-                        checking_status(recipientId, text);
                         con31(recipientId, text);
                         refer.update({status: 311});
-                        referDinner.update({dinnerType: text});
+                        if (text == "Host a dinner"){
+                            referDinner.update({dinnerType: "Vegan"});
+                        }else{
+                            referDinner.update({dinnerType: text});
+                        }
                         break;
-
 
                     case 311:
                         con311(recipientId, text);
                         refer.update({status: 35});
+                        if(text == "Host a dinner"){
+                            referDinner.update({kosher: "Yes"});
+                        }else{
+                            referDinner.update({kosher: text});
+                        }
                         referDinner.update({kosher: text});
                         break;
                     case 32:
