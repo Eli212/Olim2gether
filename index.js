@@ -602,7 +602,7 @@ function finalList(arr, recipientId) {
 };
 
 function showList(arr, recipientId) {
-    int i;
+    var i;
     for (i = 0; i < arr.length; arr++) {
         sendMessage(recipientId, { text: "Name: " + arr[i][0] + "and the Phone Number: " + arr[i][1] });
         // sendMessage(recipientId, { text: "Phone Number: " + arr[i][1] });
