@@ -299,6 +299,7 @@ function checking_status(recipientId, text){
                     case 33:
                         console.log("case 33");
                         if (text == "Host a dinner"){
+                        refer.update({status: 31});
                         return referDinner.child('DID').once('value').then(function(snapshotDin) {
                             if (snapshotDin.val() == null){
                             referDinner.set({
@@ -311,8 +312,8 @@ function checking_status(recipientId, text){
                                     "street": 0
                                   });
                              }
+                             checking_status(recipientId, text);
                          });
-                            refer.update({status: 31});
                         }else if(text == "Join a dinner"){
                              refer.update({status: 32});
                         }
