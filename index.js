@@ -305,11 +305,11 @@ function checking_status(recipientId, text){
                                     "userID": "23",
                                     "languages": [],
                                     "dinnerType":20,
-                                    "kosher": "/app/cars/gallery",
-                                    "city": 0,
+                                        "city": 0,
                                     "street": 0
                                   });
-                             }
+                             } "kosher": "/app/cars/gallery",
+
                              checking_status(recipientId, text);
                          });
                         }else if(text == "Join a dinner"){
@@ -320,8 +320,8 @@ function checking_status(recipientId, text){
                         break;
                     case 31:
                         con31(recipientId, text);
-                        sleep(3000);
                         refer.update({status: 311});
+                        sleep(3000);
                         referDinner.update({dinnerType: text});
                         break;
 
