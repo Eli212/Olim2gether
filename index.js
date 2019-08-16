@@ -298,7 +298,7 @@ function checking_status(recipientId, text){
                         if (text == "Host a dinner"){
                         return referDinner.child('DID').once('value').then(function(snapshotDin) {
                             if (snapshotDin.val() == null){
-                            refer.set({
+                            referDinner.set({
                                     "DID": "Cars",
                                     "userID": "23",
                                     "languages": [],
