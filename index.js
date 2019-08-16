@@ -305,10 +305,11 @@ function checking_status(recipientId, text){
                                     "userID": "23",
                                     "languages": [],
                                     "dinnerType":20,
-                                        "city": 0,
+                                    "kosher": null,
+                                    "city": 0,
                                     "street": 0
                                   });
-                             } "kosher": "/app/cars/gallery",
+                             }
 
                              checking_status(recipientId, text);
                          });
@@ -321,7 +322,6 @@ function checking_status(recipientId, text){
                     case 31:
                         con31(recipientId, text);
                         refer.update({status: 311});
-                        sleep(3000);
                         referDinner.update({dinnerType: text});
                         break;
 
@@ -329,6 +329,7 @@ function checking_status(recipientId, text){
                     case 311:
                         con311(recipientId, text);
                         refer.update({status: 35});
+                        sleep(3000);
                         referDinner.update({kosher: text});
                         break;
                     case 32:
