@@ -244,13 +244,11 @@ function checking_status(recipientId, text){
                         con2(recipientId, text);
                         refer.update({status: 33});
 
-
-
-
                         break;
                     case 33:
                         if (text == "Host a dinner"){
                                 refer.update({status: 31});
+                                break;
                         }
                         break;
                     case 31:
