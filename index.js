@@ -73,7 +73,7 @@ function startCon(recipientId, text){
     sendMessage(recipientId, { text: "To start conversation please enter anything.\nFor back to the menu in any stage, enter B" });
 }
 function con0(recipientId, text){
-    sendMessage(recipientId, { text: "Before we get started, lets get to know each other.\nPlease write the following information about yourself:\nfull name, phone number, languages, age." });
+    sendMessage(recipientId, { text: "Before we get started, lets get to know each other.\nPlease write the following information about yourself:\nfull name, phone number, languages." });
 }
 function updateName(info, refer){
     refer.update({fullName: info[0]});
@@ -130,7 +130,7 @@ function con2(recipientId, text){
 //    return refer.child('fullName').once('value').then(function(snapshot) {
 //        var name  = snapshot.val()
         message = {
-            "text": "Hello " + "    " + "!!, please enter on the thing your searching for",
+            "text": "Hello!!, please enter on the thing your searching for",
             "quick_replies":[{
                 "content_type":"text",
                 "title":"Host a dinner",
@@ -319,7 +319,7 @@ function checking_status(recipientId, text){
                         //checking_status(recipientId, text);
 
                         break;
-                        
+
                     case 31:
                         con31(recipientId, text);
                         refer.update({status: 311});
@@ -372,6 +372,7 @@ function checking_status(recipientId, text){
                          uKosher = snapshotDin.val();
                          });
                         dinnerAlgo(refer, uCity, uKosher, uType)
+                        sendMessage(recipientId, { text: "We hope you will find someone nice to eat with" });
                         break;
                     case 35:
                         con35(recipientId, text);
@@ -379,6 +380,7 @@ function checking_status(recipientId, text){
                         refer.update({status: 100});
                         referDinner.update({city: live[0]});
                         referDinner.update({street: live[1]});
+                        sendMessage(recipientId, { text: "Thank you for helping the olim. the olim will contact you :)" });
                         break;
                     default:
                         break;
