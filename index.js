@@ -79,7 +79,14 @@ function startCon(recipientId, text){
 function con0(recipientId, text){
     sendMessage(recipientId, { text: "Before we get started, lets get to know each other.\nPlease write the following information about yourself:\nfull name, phone number, languages, age." });
 }
-function con1(recipientId, text){
+function con1(recipientId, text, refer){
+//    var info = text.split(",");
+//    refer.update({status: 1});
+//
+//    return refer.child(info[i]).once('value').then(function(snapshot) {}
+//
+
+
     message = {
     "text": "Would you like to enter to a list of people whom helps Olim with daily problems such as go to see apartments with them or just talking with them?",
     "quick_replies":[
@@ -93,6 +100,45 @@ function con1(recipientId, text){
         "title":"NO",
         "payload":"<POSTBACK_PAYLOAD>"
 
+      }
+    ]
+  }
+    sendMessage(recipientId, message);
+}
+function con2(recipientId, text, refer){
+
+    var name = ""
+    message = {
+    return refer.child('fullName').once('value').then(function(snapshot) {name  = snapshot.val()}
+    "text": "Hello " + name + "!!, please enter on the thing your searching for",
+    "quick_replies":[{
+        "content_type":"text",
+        "title":"Host a dinner",
+        "payload":"<POSTBACK_PAYLOAD>"
+      },{
+        "content_type":"text",
+        "title":"Join a dinner",
+        "payload":"<POSTBACK_PAYLOAD>"
+      },{
+        "content_type":"text",
+        "title":"Create a pub gathering",
+        "payload":"<POSTBACK_PAYLOAD>"
+      },{
+        "content_type":"text",
+        "title":"Join a pub gathering",
+        "payload":"<POSTBACK_PAYLOAD>"
+      },{
+        "content_type":"text",
+        "title":"Join a soccer game",
+        "payload":"<POSTBACK_PAYLOAD>"
+      },{
+        "content_type":"text",
+        "title":"Just someone to talk to",
+        "payload":"<POSTBACK_PAYLOAD>"
+      },{
+        "content_type":"text",
+        "title":"Someone to go with to see apartments",
+        "payload":"<POSTBACK_PAYLOAD>"
       }
     ]
   }
@@ -129,7 +175,7 @@ function checking_status(recipientId, text){
 
                         break;
                     case 1:
-                        con1(recipientId, text)
+                        con1(recipientId, text, refer)
                         console.log("pipi");
                         //console.log(text+" 000000000000000000")
                         refer.update({status: 2});
@@ -137,12 +183,16 @@ function checking_status(recipientId, text){
                         break;
                     case 2:
                         if(text == "YES"){
-
+                            refer.update({status: 3});
                         }
 
                         else{
 
                         }
+                    case 3:
+                        con2(recipientId, text, refer);
+                        console.log("con3 VVVVVV")
+                        break;
                     default:
                         break;
                 }
