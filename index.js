@@ -194,6 +194,48 @@ function con311(recipientId, text){
   }
     sendMessage(recipientId, message);
 }
+function con32(recipientId, text){
+    message = {
+    "text": "are you a...",
+    "quick_replies":[{
+        "content_type":"text",
+        "title":"Vegan",
+        "payload":"<POSTBACK_PAYLOAD>"
+      },{
+        "content_type":"text",
+        "title":"Vegetarian",
+        "payload":"<POSTBACK_PAYLOAD>"
+      },{
+        "content_type":"text",
+        "title":"None of them",
+        "payload":"<POSTBACK_PAYLOAD>"
+      }
+    ]
+  }
+    sendMessage(recipientId, message);
+}
+function con321(recipientId, text){
+    message = {
+    "text": "Are you eating kosher?",
+    "quick_replies":[{
+        "content_type":"text",
+        "title":"Yes, please",
+        "payload":"<POSTBACK_PAYLOAD>"
+      },{
+        "content_type":"text",
+        "title":"No",
+        "payload":"<POSTBACK_PAYLOAD>"
+      }
+    ]
+  }
+    sendMessage(recipientId, message);
+}
+function con34(recipientId, text){
+    sendMessage(recipientId, { text: "please enter the city you live in" });
+}
+function con35(recipientId, text){
+    sendMessage(recipientId, { text: "Please enter the city and street(format --> city, street)" });
+}
 function checking_status(recipientId, text){
 
     var refer = firebase.database().ref("users/" + recipientId);
@@ -246,8 +288,12 @@ function checking_status(recipientId, text){
                         console.log("case 33");
                         if (text == "Host a dinner"){
                             refer.update({status: 31});
-                            checking_status(recipientId, text);
+
+                        }else if(text == "Join a dinner"){
+                             refer.update({status: 32});
                         }
+                        checking_status(recipientId, text);
+
                         break;
                     case 31:
                         con31(recipientId, text);
@@ -258,7 +304,21 @@ function checking_status(recipientId, text){
                         con311(recipientId, text);
                         refer.update({status: 35});
                         break;
+                    case 32:
+                        con32(recipientId, text);
+                        refer.update({status: 321});
+                        break;
+                    case 321:
+                        con321(recipientId, text);
+                        refer.update({status: 34});
+                        break;
+                    case 34:
+                        con34(recipientId, text);
+                        refer.update({status: 100});
+                        break;
                     case 35:
+                        con35(recipientId, text);
+                        refer.update({status: 100});
                         break;
                     default:
                         break;
