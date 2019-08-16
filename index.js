@@ -309,8 +309,10 @@ function checking_status(recipientId, text){
                                       });
                             refer.update({status: 31});
 
-                        }else if(text == "Join a dinner"){
-                             refer.update({status: 32});
+
+                            }else if(text == "Join a dinner"){
+                                 refer.update({status: 32});
+                            }
                         }
                         checking_status(recipientId, text);
 
