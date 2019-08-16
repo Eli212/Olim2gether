@@ -296,24 +296,26 @@ function checking_status(recipientId, text){
                     case 33:
                         console.log("case 33");
                         if (text == "Host a dinner"){
-                            return refer.child('DID').once('value').then(function(snapshot) {
-                                if (snapshot.val() == null){
-                                refer.set({
-                                        "DID": "Cars",
-                                        "userID": "23",
-                                        "dinnerType": "ddd",
-                                        "kosher":"hdhd",
-                                        "languages": "/app/cars/gallery",
-                                        "city": "gdgd",
-                                        "street": "hdh"
-                                      });
+                        return referDinner.child('DID').once('value').then(function(snapshot) {
+                            if (snapshot.val() == null){
+                            refer.set({
+                                    "DID": "Cars",
+                                    "userID": "23",
+                                    "languages": [],
+                                    "dinnerType":20,
+                                    "kosher": "/app/cars/gallery",
+                                    "city": 0
+                                    "street": 0
+                                  });
+                             }
+                         });
+              startCon(recipientId, text);
                             refer.update({status: 31});
 
-
-                            }else if(text == "Join a dinner"){
-                                 refer.update({status: 32});
-                            }
+                        }else if(text == "Join a dinner"){
+                             refer.update({status: 32});
                         }
+
                         checking_status(recipientId, text);
 
                         break;
