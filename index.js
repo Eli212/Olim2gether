@@ -325,6 +325,7 @@ function checking_status(recipientId, text){
                         referDinner.update({dinnerType: text});
                         break;
 
+
                     case 311:
                         con311(recipientId, text);
                         refer.update({status: 35});
