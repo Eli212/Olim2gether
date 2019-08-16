@@ -320,6 +320,7 @@ function checking_status(recipientId, text){
 
                         break;
                     case 31:
+                        checking_status(recipientId, text);
                         con31(recipientId, text);
                         refer.update({status: 311});
                         referDinner.update({dinnerType: text});
