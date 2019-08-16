@@ -309,9 +309,8 @@ function checking_status(recipientId, text){
                          });
                         }else if(text == "Join a dinner"){
                              refer.update({status: 32});
+                             checking_status(recipientId, text);
                         }
-                        //checking_status(recipientId, text);
-
                         break;
 
                     case 31:
