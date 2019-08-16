@@ -152,6 +152,42 @@ function con2(recipientId, text){
     sendMessage(recipientId, message);
   //}
 }
+function con31(recipientId, text){
+    message = {
+    "text": "witch kind of dinner you are going to make?",
+    "quick_replies":[{
+        "content_type":"text",
+        "title":"Vegan",
+        "payload":"<POSTBACK_PAYLOAD>"
+      },{
+        "content_type":"text",
+        "title":"Vegetarian",
+        "payload":"<POSTBACK_PAYLOAD>"
+      },{
+        "content_type":"text",
+        "title":"None of them",
+        "payload":"<POSTBACK_PAYLOAD>"
+      }
+    ]
+  }
+    sendMessage(recipientId, message);
+}
+function con311(recipientId, text){
+    message = {
+    "text": "Is the dinner kosher?",
+    "quick_replies":[{
+        "content_type":"text",
+        "title":"Yes!!",
+        "payload":"<POSTBACK_PAYLOAD>"
+      },{
+        "content_type":"text",
+        "title":"No, sorry",
+        "payload":"<POSTBACK_PAYLOAD>"
+      }
+    ]
+  }
+    sendMessage(recipientId, message);
+}
 function checking_status(recipientId, text){
 
     var refer = firebase.database().ref("users/" + recipientId);
@@ -199,7 +235,21 @@ function checking_status(recipientId, text){
                         }
                     case 3:
                         con2(recipientId, text);
-                        console.log("con3 VVVVVV")
+                        if(text == "Host a dinner"){
+                            refer.update({status: 31});
+                        }
+
+                        break;
+                    case 31:
+                        con31(recipientId, text);
+                        refer.update({status: 311});
+                        break;
+
+                    case 311:
+                        con311(recipientId, text);
+                        refer.update({status: 35});
+                        break;
+                    case 35:
                         break;
                     default:
                         break;
