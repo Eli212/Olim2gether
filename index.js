@@ -228,9 +228,7 @@ function checking_status(recipientId, text){
 
                         break;
                     case 1:
-                        con1(recipientId, text)
-                        console.log("pipi");
-                        //console.log(text+" 000000000000000000")
+                        con1(recipientId, text);
                         refer.update({status: 2});
 
                         break;
@@ -244,17 +242,16 @@ function checking_status(recipientId, text){
                         }
                     case 3:
                         con2(recipientId, text);
-                        while(!(text == "Host a dinner")){
-                            if (text == "Host a dinner"){
+                        refer.update({status: 33});
+
+
+
+
+                        break;
+                    case 33:
+                        if (text == "Host a dinner"){
                                 refer.update({status: 31});
-                                break;
-                            }
-
-
-
                         }
-
-
                         break;
                     case 31:
                         con31(recipientId, text);
