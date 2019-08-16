@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
-var referDinner = firebase.database().ref("dinner/" + recipientId);
 
 ///////////////// FIREBASE /////////////////
 var firebase = require("firebase/app");
@@ -186,8 +185,6 @@ function con31(recipientId, text){
     ]
   }
     sendMessage(recipientId, message);
-    refer.update({status: 311});
-    referDinner.update({dinnerType: text});
 }
 function con311(recipientId, text){
     message = {
@@ -250,6 +247,7 @@ function con35(recipientId, text){
 function checking_status(recipientId, text){
 
     var refer = firebase.database().ref("users/" + recipientId);
+    var referDinner = firebase.database().ref("dinner/" + recipientId);
     return refer.child('status').once('value').then(function(snapshot) {
         if (snapshot.val() == null){
         refer.set({
@@ -322,6 +320,9 @@ function checking_status(recipientId, text){
                         break;
                     case 31:
                         con31(recipientId, text);
+                        sleep(3000);
+                        refer.update({status: 311});
+                        referDinner.update({dinnerType: text});
                         break;
 
                     case 311:
