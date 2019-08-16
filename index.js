@@ -185,6 +185,7 @@ function con31(recipientId, text){
     ]
   }
     sendMessage(recipientId, message);
+    referDinner.update({dinnerType: text});
 }
 function con311(recipientId, text){
     message = {
@@ -321,7 +322,6 @@ function checking_status(recipientId, text){
                     case 31:
                         con31(recipientId, text);
                         refer.update({status: 311});
-                        referDinner.update({dinnerType: text});
                         break;
 
                     case 311:
