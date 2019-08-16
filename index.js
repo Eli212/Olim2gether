@@ -45,7 +45,7 @@ app.get('/webhook', function(req, res) {
 // handler receiving messages
 app.post('/webhook', function(req, res) {
     var events = req.body.entry[0].messaging;
-    for (i = 0; i < events.length; i++) {
+    for (i = 0; i < 1; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
             checking_status(event.sender.id, event.message.text);
@@ -129,28 +129,28 @@ function con2(recipientId, text){
                 "content_type":"text",
                 "title":"Join a dinner",
                 "payload":"<POSTBACK_PAYLOAD>"
+              },
+              {
+                "content_type":"text",
+                "title":"Create a pub gathering",
+                "payload":"<POSTBACK_PAYLOAD>"
+              },{
+                "content_type":"text",
+                "title":"Join a pub gathering",
+                "payload":"<POSTBACK_PAYLOAD>"
+              },{
+                "content_type":"text",
+                "title":"Join a soccer game",
+                "payload":"<POSTBACK_PAYLOAD>"
+              },{
+                "content_type":"text",
+                "title":"Just someone to talk to",
+                "payload":"<POSTBACK_PAYLOAD>"
+              },{
+                "content_type":"text",
+                "title":"Someone to go with to see apartments",
+                "payload":"<POSTBACK_PAYLOAD>"
               }
-//              {
-//                "content_type":"text",
-//                "title":"Create a pub gathering",
-//                "payload":"<POSTBACK_PAYLOAD>"
-//              },{
-//                "content_type":"text",
-//                "title":"Join a pub gathering",
-//                "payload":"<POSTBACK_PAYLOAD>"
-//              },{
-//                "content_type":"text",
-//                "title":"Join a soccer game",
-//                "payload":"<POSTBACK_PAYLOAD>"
-//              },{
-//                "content_type":"text",
-//                "title":"Just someone to talk to",
-//                "payload":"<POSTBACK_PAYLOAD>"
-//              },{
-//                "content_type":"text",
-//                "title":"Someone to go with to see apartments",
-//                "payload":"<POSTBACK_PAYLOAD>"
-//              }
             ]
           }
 
