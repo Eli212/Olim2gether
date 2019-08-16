@@ -70,7 +70,7 @@ function stam() {
 };
 
 function startCon(recipientId, text){
-    sendMessage(recipientId, { text: "To start conversation please enter anything.\nFor back to the menu in any stage, enter B" });
+    sendMessage(recipientId, { text: "To start conversation please enter hello :)" });
 }
 function con0(recipientId, text){
     sendMessage(recipientId, { text: "Before we get started, lets get to know each other.\nPlease write the following information about yourself:\nfull name, phone number, languages." });
@@ -378,8 +378,8 @@ function checking_status(recipientId, text){
                         con35(recipientId, text);
                         var live = text.split(",");
                         refer.update({status: 100});
-                        referDinner.update({city: live[0]});
-                        referDinner.update({street: live[1]});
+//                        referDinner.update({city: live[0]});
+//                        referDinner.update({street: live[1]});
                         sendMessage(recipientId, { text: "Thank you for helping the olim. the olim will contact you :)" });
                         break;
                     default:
