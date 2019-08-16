@@ -48,12 +48,7 @@ app.post('/webhook', function(req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-//            stam();
-            //testing(event.sender.id, event.message.text);
             checking_status(event.sender.id, event.message.text);
-//            if (!kittenMessage(event.sender.id, event.message.text)) {
-//               sendMessage(event.sender.id, { text: "Echo: " + event.message.text });
-//            }
         } else if (event.postback) {
             console.log("Postback received: " + JSON.stringify(event.postback));
         }
@@ -128,33 +123,34 @@ function con2(recipientId, text){
             "text": "Hello " + "    " + "!!, please enter on the thing your searching for",
             "quick_replies":[{
                 "content_type":"text",
-                "title":"Host a dinner",
+                "title":"Hostadinner",
                 "payload":"<POSTBACK_PAYLOAD>"
               },{
                 "content_type":"text",
                 "title":"Join a dinner",
                 "payload":"<POSTBACK_PAYLOAD>"
-              },{
-                "content_type":"text",
-                "title":"Create a pub gathering",
-                "payload":"<POSTBACK_PAYLOAD>"
-              },{
-                "content_type":"text",
-                "title":"Join a pub gathering",
-                "payload":"<POSTBACK_PAYLOAD>"
-              },{
-                "content_type":"text",
-                "title":"Join a soccer game",
-                "payload":"<POSTBACK_PAYLOAD>"
-              },{
-                "content_type":"text",
-                "title":"Just someone to talk to",
-                "payload":"<POSTBACK_PAYLOAD>"
-              },{
-                "content_type":"text",
-                "title":"Someone to go with to see apartments",
-                "payload":"<POSTBACK_PAYLOAD>"
               }
+//              {
+//                "content_type":"text",
+//                "title":"Create a pub gathering",
+//                "payload":"<POSTBACK_PAYLOAD>"
+//              },{
+//                "content_type":"text",
+//                "title":"Join a pub gathering",
+//                "payload":"<POSTBACK_PAYLOAD>"
+//              },{
+//                "content_type":"text",
+//                "title":"Join a soccer game",
+//                "payload":"<POSTBACK_PAYLOAD>"
+//              },{
+//                "content_type":"text",
+//                "title":"Just someone to talk to",
+//                "payload":"<POSTBACK_PAYLOAD>"
+//              },{
+//                "content_type":"text",
+//                "title":"Someone to go with to see apartments",
+//                "payload":"<POSTBACK_PAYLOAD>"
+//              }
             ]
           }
 
@@ -248,7 +244,7 @@ function checking_status(recipientId, text){
                     case 33:
                         if (text == "Host a dinner"){
                             refer.update({status: 31});
-                                
+
                         }
                         break;
                     case 31:
