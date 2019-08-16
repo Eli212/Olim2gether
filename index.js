@@ -323,22 +323,11 @@ function checking_status(recipientId, text){
                     case 31:
                         con31(recipientId, text);
                         refer.update({status: 311});
-                        if (text == "Host a dinner"){
-                            referDinner.update({dinnerType: "Vegan"});
-                        }else{
-                            referDinner.update({dinnerType: text});
-                        }
                         break;
-
                     case 311:
+                        referDinner.update({dinnerType: text});
                         con311(recipientId, text);
                         refer.update({status: 35});
-                        if(text == "Host a dinner"){
-                            referDinner.update({kosher: "Yes"});
-                        }else{
-                            referDinner.update({kosher: text});
-                        }
-                        referDinner.update({kosher: text});
                         break;
                     case 32:
                         con32(recipientId, text);
@@ -375,14 +364,18 @@ function checking_status(recipientId, text){
                         sendMessage(recipientId, { text: "We hope you will find someone nice to eat with" });
                         break;
                     case 35:
+                        referDinner.update({kosher: text});
                         con35(recipientId, text);
-                        var live = text.split(",");
                         refer.update({status: 100});
-//                        referDinner.update({city: live[0]});
-//                        referDinner.update({street: live[1]});
                         break;
                     case 100:
+                        var live = text.split(",");
+                        referDinner.update({city: live[0]});
+                        referDinner.update({street: live[1]});
                         sendMessage(recipientId, { text: "Thank you for helping the olim. the olim will contact you :)" });
+                        break;
+                    case 200:
+//                        sendMessage(recipientId, { text: "Thank you for helping the olim. the olim will contact you :)" });
                         break;
                     default:
                         break;
