@@ -111,6 +111,14 @@ function con1(recipientId, text){
   }
     sendMessage(recipientId, message);
 }
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
 function con2(recipientId, text){
 
 //    var refer = firebase.database().ref("users/" + recipientId);
@@ -149,8 +157,9 @@ function con2(recipientId, text){
               }
             ]
           }
+
     sendMessage(recipientId, message);
-  //}
+
 }
 function con31(recipientId, text){
     message = {
@@ -236,9 +245,9 @@ function checking_status(recipientId, text){
                     case 3:
                         con2(recipientId, text);
                         if(text == "Host a dinner"){
-                            setTimeout(function(){
-                             }, 2000);
+                            sleep(3000);
                             refer.update({status: 31});
+
                         }
                         else{
 
