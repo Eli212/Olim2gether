@@ -411,11 +411,11 @@ function dinnerAlgo(UID, uCity, uKosher, uType){
     var matches = [];
     var allUsers = firebase.database().ref("users");
     return allUsers.child(UID + 'languages').once('value').then(function(snapshotLang) {
-        var uLanguages = snapshotLang.val();                                                //array
+        var uLanguages = snapshotLang.val(); //array
+        sendMessage(recipientId, { text: uLanguages});
             var dinnerRefer = firebase.database().ref("dinner");
             return dinnerRefer.once('value').then(function(snapshot1) {
                 var dinner = snapshot1.val();
-                sendMessage(recipientId, { text: dinner});
                 var DID;
                 for(DID = 0; DID < dinner.length; DID++){
                     return dinnerRefer.child(dinner[DID] + '/city').once('value').then(function(snapshotCity) {
