@@ -238,6 +238,9 @@ function checking_status(recipientId, text){
                         if(text == "Host a dinner"){
                             refer.update({status: 31});
                         }
+                        else{
+                        
+                        }
 
                         break;
                     case 31:
