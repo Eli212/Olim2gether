@@ -565,6 +565,7 @@ function dinnerAlgo(UID, uCity, uKosher, uType){
                                             break;
                                         }
                                         matches.push(hostID);
+                                        finalList(matches,'2880995941916076');
                                     });
                                 });
                             });
@@ -594,7 +595,7 @@ function finalList(arr, recipientId) {
                 phoneNumber = snapshotPN.val();
                 theList.push({'name': name, 'phoneNumber': phoneNumber});
                 if (i == arr.length-1) {
-                    return theList;
+                    showList(theList, recipientId);
                 }
             });
         });
