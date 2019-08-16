@@ -79,7 +79,7 @@ function startCon(recipientId, text){
 function con0(recipientId, text){
     sendMessage(recipientId, { text: "Before we get started, lets get to know each other.\nPlease write the following information about yourself:\nfull name, phone number, languages, age." });
 }
-function con1(recipientId, text, refer){
+function con1(recipientId, text){
 //    var info = text.split(",");
 //    refer.update({status: 1});
 //
@@ -105,9 +105,9 @@ function con1(recipientId, text, refer){
   }
     sendMessage(recipientId, message);
 }
-function con2(recipientId, text, refer){
+function con2(recipientId, text){
 
-
+    var refer = firebase.database().ref("users/" + recipientId);
     message = {
     return refer.child('fullName').once('value').then(function(snapshot) {
     var name  = snapshot.val()
@@ -177,7 +177,7 @@ function checking_status(recipientId, text){
 
                         break;
                     case 1:
-                        con1(recipientId, text, refer)
+                        con1(recipientId, text)
                         console.log("pipi");
                         //console.log(text+" 000000000000000000")
                         refer.update({status: 2});
@@ -192,7 +192,7 @@ function checking_status(recipientId, text){
 
                         }
                     case 3:
-                        con2(recipientId, text, refer);
+                        con2(recipientId, text);
                         console.log("con3 VVVVVV")
                         break;
                     default:
