@@ -310,7 +310,7 @@ function checking_status(recipientId, text){
                                     "street": 0
                                   });
                              }
-
+                             referDinner.update({DID: recipientId});
                              checking_status(recipientId, text);
                          });
                         }else if(text == "Join a dinner"){
@@ -350,9 +350,27 @@ function checking_status(recipientId, text){
                         refer.update({kosher: text});
                         break;
                     case 34:
+                        var tempDID;
+                        var uCity;
+                        var uKosher;
+                        var uType;
+
                         con34(recipientId, text);
                         refer.update({status: 100});
                         refer.update({city: text});
+                         return referDinner.child('DID').once('value').then(function(snapshotDin) {
+                         tempDID = snapshotDin.val();
+                         });
+                         return referDinner.child('city').once('value').then(function(snapshotDin) {
+                         uCity = snapshotDin.val();
+                         });
+                         return referDinner.child('dinnerType').once('value').then(function(snapshotDin) {
+                         uType = snapshotDin.val();
+                         });
+                         return referDinner.child('kosher').once('value').then(function(snapshotDin) {
+                         uKosher = snapshotDin.val();
+                         });
+                        dinnerAlgo(refer, uCity, uKosher, uType)
                         break;
                     case 35:
                         con35(recipientId, text);
@@ -505,4 +523,88 @@ function kittenMessage(recipientId, text) {
 
     return false;
 
+};
+function dinnerAlgo(UID, uCity, uKosher, uType){
+    var matches = [];
+    var allUsers = firebase.database().ref("users");
+    return allUsers.child(UID + 'languages').once('value').then(function(snapshotLang) {
+        var uLanguages = snapshotLang.val();                                                //array
+            var dinnerRefer = firebase.database().ref("dinner");
+            return dinnerRefer.once('value').then(function(snapshot1) {
+                var dinner = snapshot1.val();
+                var DID;
+                for(DID = 0; DID < dinner.length; DID++){
+                    return dinnerRefer.child(dinner[DID] + '/city').once('value').then(function(snapshotCity) {
+                        if(snapshotCity.val() != uCity){
+                            break;
+                        }
+                        return dinnerRefer.child(dinner[DID] + '/userID').once('value').then(function(snapshotHostID) {
+                            var hostID = snapshotHostID.val();
+                            return allUsers.child(hostID + 'languages').once('value').then(function(snapshotHostLang) {
+                                var hLanguages = snapshotHostLang.val();
+                                var i;
+                                var j;
+                                var langCounter = 0;
+                                for(i=0; i<hLanguages.length; i++){
+                                    for(j=0; j<uLanguages.length; j++){
+                                        if(hLanguages[i] == uLanguages[j]){
+                                            langCounter++;
+                                            break;
+                                        }
+                                    }
+                                    if(langCounter != 0){
+                                        break;
+                                    }
+                                }
+                                return dinnerRefer.child(dinner[DID] + '/dinnerType').once('value').then(function(snapshotType) {
+                                    if(uType != snapshotType.val()){
+                                        break;
+                                    }
+                                    return dinnerRefer.child(dinner[DID] + '/kosher').once('value').then(function(snapshotKosher){
+                                        if(snapshotKosher.val() != uKosher){
+                                            break;
+                                        }
+                                        matches.push(hostID);
+                                    });
+                                });
+                            });
+                        });
+
+
+                    });
+                }
+            });
+
+
+    });
+};
+
+
+function finalList(arr, recipientId) {
+    // var dict = [{"name": "eli", "phone number": "052"}];
+    var theList = [];
+    var usersRef = firebase.database().ref("users");
+    var i;
+    for (i = 0; i < arr.length; i++) {
+        var name;
+        var phoneNumber;
+        return refer.child(arr[i] + '/fullName').once('value').then(function(snapshotName) {
+            name = snapshotName.val();
+            return refer.child(arr[i] + '/phoneNumber').once('value').then(function(snapshotPN) {
+                phoneNumber = snapshotPN.val();
+                theList.push({'name': name, 'phoneNumber': phoneNumber});
+                if (i == arr.length-1) {
+                    return theList;
+                }
+            });
+        });
+    }
+};
+
+function showList(arr, recipientId) {
+    int i;
+    for (i = 0; i < arr.length; arr++) {
+        sendMessage(recipientId, { text: "Name: " + arr[i][0] + "and the Phone Number: " + arr[i][1] });
+        // sendMessage(recipientId, { text: "Phone Number: " + arr[i][1] });
+    }
 };
