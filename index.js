@@ -271,10 +271,7 @@ function checking_status(recipientId, text){
         switch(status){
                     case 0:
                         con0(recipientId, text);
-                        //startCon(recipientId, text);
-                        console.log("poop");
                         refer.update({status: 1});
-
                         break;
                     case 1:
                         con1(recipientId, text);
@@ -284,15 +281,12 @@ function checking_status(recipientId, text){
                     case 2:
                         if(text == "Yes"){
                             refer.update({status: 3});
-                        }
-
-                        else{
+                        }else{
 
                         }
                     case 3:
                         con2(recipientId, text);
                         refer.update({status: 33});
-
                         break;
                     case 33:
                         console.log("case 33");
@@ -332,21 +326,33 @@ function checking_status(recipientId, text){
                     case 32:
                         con32(recipientId, text);
                         refer.update({status: 321});
-                        refer.update({dinnerType: text});
                         break;
                     case 321:
+                        refer.update({dinnerType: text});
                         con321(recipientId, text);
                         refer.update({status: 34});
-                        refer.update({kosher: text});
                         break;
                     case 34:
+                        refer.update({kosher: text});
                         var tempDID;
                         var uCity;
                         var uKosher;
                         var uType;
-
                         con34(recipientId, text);
+                        refer.update({status: 200});
+                        break;
+                    case 35:
+                        referDinner.update({kosher: text});
+                        con35(recipientId, text);
                         refer.update({status: 100});
+                        break;
+                    case 100:
+                        var live = text.split(",");
+                        referDinner.update({city: live[0]});
+                        referDinner.update({street: live[1]});
+                        sendMessage(recipientId, { text: "Thank you for helping the olim. the olim will contact you :)" });
+                        break;
+                    case 200:
                         refer.update({city: text});
                          return referDinner.child('DID').once('value').then(function(snapshotDin) {
                          tempDID = snapshotDin.val();
@@ -361,21 +367,7 @@ function checking_status(recipientId, text){
                          uKosher = snapshotDin.val();
                          });
                         dinnerAlgo(refer, uCity, uKosher, uType)
-                        sendMessage(recipientId, { text: "We hope you will find someone nice to eat with" });
-                        break;
-                    case 35:
-                        referDinner.update({kosher: text});
-                        con35(recipientId, text);
-                        refer.update({status: 100});
-                        break;
-                    case 100:
-                        var live = text.split(",");
-                        referDinner.update({city: live[0]});
-                        referDinner.update({street: live[1]});
-                        sendMessage(recipientId, { text: "Thank you for helping the olim. the olim will contact you :)" });
-                        break;
-                    case 200:
-//                        sendMessage(recipientId, { text: "Thank you for helping the olim. the olim will contact you :)" });
+                        sendMessage(recipientId, { text: "We hope you will find someone nice to eat with :D" });
                         break;
                     default:
                         break;
