@@ -354,19 +354,19 @@ function checking_status(recipientId, text){
                         break;
                     case 200:
                         refer.update({city: text});
-                         return referDinner.child('DID').once('value').then(function(snapshotDin) {
-                         tempDID = snapshotDin.val();
-                         });
-                         return referDinner.child('city').once('value').then(function(snapshotDin) {
-                         uCity = snapshotDin.val();
-                         });
-                         return referDinner.child('dinnerType').once('value').then(function(snapshotDin) {
-                         uType = snapshotDin.val();
-                         });
-                         return referDinner.child('kosher').once('value').then(function(snapshotDin) {
-                         uKosher = snapshotDin.val();
-                         });
-                        dinnerAlgo(refer, uCity, uKosher, uType)
+//                         return referDinner.child('DID').once('value').then(function(snapshotDin) {
+//                         tempDID = snapshotDin.val();
+//                         });
+//                         return referDinner.child('city').once('value').then(function(snapshotDin) {
+//                         uCity = snapshotDin.val();
+//                         });
+//                         return referDinner.child('dinnerType').once('value').then(function(snapshotDin) {
+//                         uType = snapshotDin.val();
+//                         });
+//                         return referDinner.child('kosher').once('value').then(function(snapshotDin) {
+//                         uKosher = snapshotDin.val();
+//                         });
+//                        dinnerAlgo(refer, uCity, uKosher, uType)
                         sendMessage(recipientId, { text: "We hope you will find someone nice to eat with :D" });
                         break;
                     default:
