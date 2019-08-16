@@ -78,10 +78,19 @@ function con0(recipientId, text){
 function updateName(info, refer){
     refer.update({fullName: info[0]});
 }
+function updatePhoneNumber(info, refer){
+    refer.update({phoneNumber: info[1]});
+}
+function updateLanguages(info, refer){
+    refer.update({languages: info[2]});
+}
 function con1(recipientId, text){
     var info = text.split(",");
     var refer = firebase.database().ref("users/" + recipientId);
-    updateName(info, refer)
+    updateName(info, refer);
+    updatePhoneNumber(info, refer);
+    updateLanguages(info, refer);
+
 
 //    refer.update({status: 1});
 //
