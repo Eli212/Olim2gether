@@ -371,13 +371,8 @@ function checking_status(recipientId, text){
                          });
                         break;
                     case 300:
+                        sendMessage(recipientId, { text: "1. Tomer and is phone number is " + 052-6109278 });
                         sendMessage(recipientId, { text: "We hope you will find someone nice to eat with :D" });
-                        sendMessage(recipientId, { text: tempDID});
-                        sendMessage(recipientId, { text: uCity});
-                        sendMessage(recipientId, { text: uType});
-                        sendMessage(recipientId, { text: uKosher});
-                        dinnerAlgo(refer, uCity, uKosher, uType)
-                        sendMessage(recipientId, { text: "Done" });
                         break;
                     default:
                         break;
