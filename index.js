@@ -48,7 +48,6 @@ app.post('/webhook', function(req, res) {
     for (i = 0; i < 1; i++) {
         var event = events[i];
         console.log("event: " + event.message.text);
-        console.log("event: " + events.message.text);
         if (event.message && event.message.text) {
             checking_status(event.sender.id, event.message.text);
         } else if (event.postback) {
@@ -247,7 +246,7 @@ function checking_status(recipientId, text){
                         console.log("case 33");
                         if (text == "Host a dinner"){
                             refer.update({status: 31});
-                            checking_status(recipientId, text)
+                            checking_status(recipientId, text);
                         }
                         break;
                     case 31:
