@@ -409,6 +409,7 @@ function sendMessage(recipientId, message) {
 
 function dinnerAlgo(UID, uCity, uKosher, uType){
     var matches = [];
+    sendMessage(recipientId, { text: "OMG" });
     var allUsers = firebase.database().ref("users");
     return allUsers.child(UID + 'languages').once('value').then(function(snapshotLang) {
         var uLanguages = snapshotLang.val(); //array
